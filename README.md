@@ -1,2 +1,2 @@
 # ProyectoFinal
-Our final project of National Technological University
+Our National Technological University final project
