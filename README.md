@@ -3,7 +3,7 @@
 </p>
 <br />
 
-# Sobre nuestro Proyecto Final
+# Sobre el Proyecto Final
 Somos un grupo de estudiantes de la Universidad Tecnológica Nacional - Facultad Regional Córdoba organizados voluntariamente con el objetivo de planificar y construir un proyecto cuyo resultado sea un producto de software haciendo uso apropiado de la ciencia y tecnología informática y adecuándolo a la realidad y actualidad de los ámbitos informático y empresario.
 
 
