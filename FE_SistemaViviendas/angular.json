@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FESistemaViviendas"
+    }
+  },
+  "defaultProject": "FESistemaViviendas",
+  "cli": {
+    "analytics": false
+  }
 }
