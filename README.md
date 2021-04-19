@@ -9,6 +9,8 @@ Somos un grupo de estudiantes de la Universidad Tecnológica Nacional - Facultad
 
 ## ¿Qué producto de software construimos?
 
+Construimos un producto de software llamado roofIT, dirigido a organizaciones inmersas en el mercado inmobiliario que facilitan la venta de viviendas a personas particulares por intermedio de mecanismos de financiación y adjudicación según algún criterio de puntaje u ordenamiento.
+
 ## ¿Quiénes contribuimos? 
 
 * Fuentes Manuel
