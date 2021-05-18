@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Prompt", sans-serif;
+}
+
+.primary-color {
+  color: #ffe168;
+}
+
+.roofIT-bg-primary {
+  background-color: #ffe168;
+}
