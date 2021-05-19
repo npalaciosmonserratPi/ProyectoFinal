@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3050;
 
 // Inicializar variables
 var app = express();
+
 app.use(bodyParser.json());
 
 //Rutas

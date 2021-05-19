@@ -1,16 +1,19 @@
-//RUTAS, METODOS A LA BASE DE DATOS
+// REQUIRED
 const express = require('express');
-const conn = require('../../config/config');
+var bcrypt = require('bcryptjs');
+const conn = require('../../config/config_db');
 
-const login = require('./login.model');
 const app = express();
 
-//GET
+//querys centralizadas
+const queryBD = require('./login.query');
+
+//POST
 app.post('/', (req, res) => {
 
-    const query = `SELECT * FROM users WHERE userName = '${req.body.userName}' and password = '${req.body.password}'`;
+    const queryLog = queryBD.queryLogin(req);
 
-    conn.query(query, (error, result) => {
+    conn.query(queryLog, (error, result) => {
         if(error) throw error;
 
         if(result.length > 0){
@@ -28,7 +31,6 @@ app.post('/', (req, res) => {
         }
     });
 });
-
 
 //EXPORT
 module.exports = app
