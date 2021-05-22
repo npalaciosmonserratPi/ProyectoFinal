@@ -3,10 +3,7 @@
   font-family: "Prompt", sans-serif;
 }
 
-.primary-color {
-  color: #ffe168;
-}
-
-.roofIT-bg-primary {
-  background-color: #ffe168;
-}
+/* $colors: (
+  "primary": #ffe168,
+  "secondary": blue,
+); */

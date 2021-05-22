@@ -4,15 +4,15 @@
     
     <form class="form" autocomplete="off">
       <label>Usuario</label>
-      <input class="form__input" type="text" name="user" [(ngModel)]="userDto.user">
+      <input class="form__input" type="text" name="user" [(ngModel)]="userDto.userName">
 
       <label class="form_label mt-5">Contraseña</label>
-      <input class="form__input" type="password" name="password" [(ngModel)]="userDto.password">
+      <input class="form__input" type="password" name="password" [(ngModel)]="userDto.password" (keyup.enter)="login()">
 
     </form>
-    <button class="btn btn-warning" (click)="login()">Iniciar sesion</button>
+    <button class="btn btn-warning" (click)="login()" [disabled]='isLoading'>Iniciar sesion</button>
 
-  </div>
+  </div> 
 </div>
 
 
