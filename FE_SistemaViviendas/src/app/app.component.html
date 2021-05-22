@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+
+<div class="spinner animate__animated animate__fadeIn" *ngIf="isLoading"> 
+    <app-spinner></app-spinner>
+</div>
+<div  [ngClass]="{'pag': isLoading}">
+    <router-outlet></router-outlet>
+</div>

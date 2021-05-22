@@ -1,3 +1,31 @@
-<p>
-  sidebar works!
-</p>
+<div class="sidebar">
+  <div class="sidebar__img-wrapper">
+    <img class="sidebar__img-wrapper--image" src="../../../assets/roofIT_Logo.png" alt="">
+  </div>
+  <div class="sidebar__menu-wrapper">
+    <ul>
+      <!-- Items -->
+      <ng-template ngFor let-item [ngForOf]="menuItem">
+        <li class="sidebar__menu">
+          <a [href]="item.path" class="sidebar__item-menu">
+            <i class="sidebar__item-menu--icon" [class]="item.icon"></i>
+            <span class="sidebar__item-menu--name">{{item.name}}</span>
+          </a>
+        </li>
+
+      <!-- Items hijos -->
+        <ul>
+          <ng-template ngFor let-childItem [ngForOf]="item.childItems">
+            <li>
+              <a [href]="childItem.path">
+                <i [class]="childItem.icon"></i>
+                <span>{{childItem.name}}</span>
+              </a>
+            </li>
+          </ng-template>
+        </ul>
+      </ng-template>
+      
+    </ul>
+</div>
+</div>
