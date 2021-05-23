@@ -7,7 +7,7 @@
   background-color: #f7f7f7b9;
 
   &__img-wrapper {
-    width: 15rem;
+    width: 10rem;
     margin-top: 4rem;
 
     &--image {
@@ -25,11 +25,11 @@
 
   &__menu {
     width: 100%;
-    padding: 1rem 2.5rem;
+    padding: 0.3rem 2rem;
   }
 
   &__menu:hover {
-    background-color: #ffe168;
+    background-color: #ffe1688c;
   }
 
   &__item-menu {
@@ -40,7 +40,7 @@
     cursor: pointer;
 
     &--icon {
-      margin-right: 1rem;
+      margin-right: 2rem;
       font-size: 2rem;
       width: 2rem;
     }

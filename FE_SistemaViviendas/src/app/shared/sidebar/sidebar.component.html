@@ -6,8 +6,8 @@
     <ul>
       <!-- Items -->
       <ng-template ngFor let-item [ngForOf]="menuItem">
-        <li class="sidebar__menu">
-          <a [href]="item.path" class="sidebar__item-menu">
+        <li class="sidebar__menu" [routerLinkActive]="['rt-bg-color-primary']" >
+          <a [routerLink]="[item.path]" class="sidebar__item-menu">
             <i class="sidebar__item-menu--icon" [class]="item.icon"></i>
             <span class="sidebar__item-menu--name">{{item.name}}</span>
           </a>

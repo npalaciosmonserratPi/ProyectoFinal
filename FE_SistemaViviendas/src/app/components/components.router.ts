@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../auth/auth-guard.service';
 import { PagesComponent } from '../pages/pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TipologiasComponent } from './tipologias/tipologias.component';
 
 const routes: Routes = [
     {
@@ -10,6 +11,7 @@ const routes: Routes = [
         //canActivate: [AuthGuardService],
         children: [
             {path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' }},
+            {path: 'tipologias', component: TipologiasComponent, data: { title: 'Tipologias' }},
             {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
         ]
     }
