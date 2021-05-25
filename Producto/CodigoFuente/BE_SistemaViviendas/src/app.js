@@ -1,8 +1,7 @@
 // Imports
 const express = require('express');
 const morgan = require('morgan');
-const rutas = require('./routes/index.js')
-const autenticacion = require('./routes/autenticacion');
+
 
 
 
@@ -23,8 +22,7 @@ app.use(express.json()); //Para que el servidor pueda interpretar json.
 
 
 //Rutas 
-app.use(rutas);
-app.use(autenticacion);
+app.use('./routes/login');
 
 
 //Empezar servidor

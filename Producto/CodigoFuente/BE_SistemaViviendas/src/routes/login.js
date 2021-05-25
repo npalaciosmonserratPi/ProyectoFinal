@@ -1,16 +1,16 @@
 const express = require('express');
-const ruta = express.Router();
+const routes = express.Router();
 const jwt = require('jsonwebtoken');
 const mysql = require('../../db/conexion');
 
-ruta.get('/login', (req,res) =>{
+routes.get('/login', (req,res) =>{
     mysql.query('Select * from Usuario', (err,rows,fields) =>{
         if(err) throw err;
         res.json(rows);
     })  
 });
 
-ruta.post('/login',(req,res)=>{
+routes.post('/login',(req,res)=>{
     const {username, password} = req.body;
     mysql.query('Select * from Usuario where nombre=? and pass=?',
     [username,password],(err,rows,fields) =>{
@@ -26,4 +26,4 @@ ruta.post('/login',(req,res)=>{
 })});
 
 
-module.exports = ruta;
+module.exports = routes;
