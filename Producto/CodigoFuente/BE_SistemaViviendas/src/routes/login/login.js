@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const jwt = require('jsonwebtoken');
-const mysql = require('../../db/conexion');
+const mysql = require('../../../db/conexion');
 
 routes.get('/login', (req,res) =>{
     mysql.query('Select * from Usuario', (err,rows,fields) =>{
@@ -18,12 +18,23 @@ routes.post('/login',(req,res)=>{
         if(rows.length > 0){
            let data = JSON.stringify(rows[0]);
            const token = jwt.sign(data,'secretWord');
-           res.json({token});
+
+          res.json({
+            ok: true,
+            message: 'Credenciales correctas',
+            user: username,
+            token: token
+        });
+           
            
         }else{
-            console.log('nada');
+            res.send('No se obtuvo usuario por parte del servidor');
+            console.log('No se obtuvo usuario por parte del servidor');
         }
 })});
+
+
+//Verificación del token
 
 
 module.exports = routes;
