@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+/* $colors: (
+  "primary": #ffe168,
+  "secondary": blue,
+); */
+
+.rt-bg-color-primary {
+  background-color: #ffe168;
+}
+
+.rt-color-primary {
+  color: #ffe168;
+}
