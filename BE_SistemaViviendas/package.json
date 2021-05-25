@@ -10,7 +10,6 @@
   "author": "Grupo1-5K4-2021",
   "license": "ISC",
   "dependencies": {
-
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "jsonwebtoken": "^8.5.1",

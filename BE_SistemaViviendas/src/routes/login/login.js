@@ -11,9 +11,9 @@ routes.get('/login', (req,res) =>{
 });
 
 routes.post('/login',(req,res)=>{
-    const {username, password} = req.body;
+    const {userName, password} = req.body;
     mysql.query('Select * from Usuario where nombre=? and pass=?',
-    [username,password],(err,rows,fields) =>{
+    [userName,password],(err,rows,fields) =>{
         if(err)throw err;
         if(rows.length > 0){
            let data = JSON.stringify(rows[0]);
@@ -22,14 +22,17 @@ routes.post('/login',(req,res)=>{
           res.json({
             ok: true,
             message: 'Credenciales correctas',
-            user: username,
+            user: userName,
             token: token
         });
            
            
         }else{
-            res.send('No se obtuvo usuario por parte del servidor');
-            console.log('No se obtuvo usuario por parte del servidor');
+            res.status(401).json({
+                ok: false,
+                message: 'No se obtuvo respuesta por parte del servidor',
+            });
+            
         }
 })});
 
