@@ -66,7 +66,7 @@ export function ErrorAlert(titulo: string, mensaje: string, txtBtn: string) {
         icon: 'error',
         confirmButtonText: txtBtn,
         confirmButtonColor: '#DC1E38',
-        timer: 2000,
+        timer: 4000,
         timerProgressBar: true,
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
