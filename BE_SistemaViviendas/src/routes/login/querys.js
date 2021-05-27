@@ -1,5 +1,5 @@
 function queryLogin(userName, password) {
-    return query = `SELECT * FROM Usuario WHERE userName=? and password=?`, [userName,password];
+    return `SELECT * FROM Usuario WHERE nombre='${userName}' and pass='${password}'`;
 }
 
 module.exports = {
