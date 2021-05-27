@@ -10,11 +10,13 @@ import { AuthService } from '../../auth/auth.service';
 export class NavbarComponent implements OnInit {
 
   showConfigMenu: boolean = false;
+  userName: string;
 
   constructor(private _authService: AuthService,
             private router: Router) { }
 
   ngOnInit() {
+    this.userName = this._authService.getDataUser();
   }
 
   logout() {

@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 export function SuccesMessage(titulo: string) {
   const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -23,7 +23,7 @@ export function SuccesMessage(titulo: string) {
 export function ErrorMessage(titulo: string) {
   const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,

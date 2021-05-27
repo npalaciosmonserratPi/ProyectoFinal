@@ -17,7 +17,7 @@ export class AuthService {
     let url = urlService + 'login';
 
     return this.http.post(url, user).pipe(map((resp: any) => {
-      this.setLocalStorage(resp.user, resp.token);
+      this.setSessionStorage(user, resp.token);
     }));
   }
 
@@ -36,8 +36,8 @@ export class AuthService {
   }
 
   /** PRIVATE */
-  private setLocalStorage( user: LoginModel, token: string) {
-    sessionStorage.setItem('user', JSON.stringify(user));
+  private setSessionStorage( user: LoginModel, token: string) {
+    sessionStorage.setItem('user', user.userName);
     sessionStorage.setItem('token', token);
   }
 }
