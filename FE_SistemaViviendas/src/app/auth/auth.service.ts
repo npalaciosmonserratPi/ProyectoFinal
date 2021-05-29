@@ -13,16 +13,15 @@ export class AuthService {
   constructor(public http: HttpClient,) { }
 
   login(user: LoginModel) {
-    
+
     let url = urlService + 'login';
 
     return this.http.post(url, user).pipe(map((resp: any) => {
-      this.setLocalStorage(resp.user.id, resp.user, resp.token);
+      this.setLocalStorage(resp.user, resp.token);
     }));
   }
 
   logout() {
-    sessionStorage.removeItem('id');
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
   }
@@ -37,8 +36,7 @@ export class AuthService {
   }
 
   /** PRIVATE */
-  private setLocalStorage(id: string, user: LoginModel, token: string) {
-    sessionStorage.setItem('id', id);
+  private setLocalStorage( user: LoginModel, token: string) {
     sessionStorage.setItem('user', JSON.stringify(user));
     sessionStorage.setItem('token', token);
   }

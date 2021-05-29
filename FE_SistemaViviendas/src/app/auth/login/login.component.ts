@@ -27,22 +27,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this._router.navigate(['/dashboard']);
-
     //Dispatch de accion de loading
-    // this._store.dispatch(new ActivarLoadingAction());
+     this._store.dispatch(new ActivarLoadingAction());
 
-    // this._authServise.login(this.userDto).subscribe((resp) => {
+     this._authServise.login(this.userDto).subscribe((resp) => {
 
-    //   this._router.navigate(['/dashboard']);
-    //   alerts.SuccesMessage('Inicio de sesión correcto');
-    //   this._store.dispatch(new DesactivarLoadingAction());
+       this._router.navigate(['/dashboard']);
+       alerts.SuccesMessage('Inicio de sesión correcto');
+       this._store.dispatch(new DesactivarLoadingAction());
 
-    // }, error => {
+     }, error => {
 
-    //   alerts.ErrorAlert('Error', error.statusText , 'cerrar'); 
-    //   this._store.dispatch(new DesactivarLoadingAction());
-    // });
+      alerts.ErrorAlert('Error', error.statusText , 'cerrar');
+       this._store.dispatch(new DesactivarLoadingAction());
+     });
   }
 
 }
