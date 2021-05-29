@@ -2,9 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const login = require('./routes/login/login.js')
-const passport = require('passport');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
+
 
 
 // Inicializar variables
@@ -18,7 +16,7 @@ app.set('puerto', process.env.PORT || 3050);
 
 //Middlewares
 app.use(morgan('dev')); //Me muestra un mensaje de tipo dev en la consola
-app.use(express.urlencoded({extended:true})); //Para que no se capturen datos de tipo imagen o derivados
+app.use(express.urlencoded({extended:false})); //Para que no se capturen datos de tipo imagen o derivados
 app.use(express.json()); //Para que el servidor pueda interpretar json.
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
@@ -26,14 +24,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS"); 
     next();
   });
-app.use(cookieParser('miSecreto'));
-app.use(session({
-  secret: 'miSecreto',
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 //Rutas 
 app.use(login);
