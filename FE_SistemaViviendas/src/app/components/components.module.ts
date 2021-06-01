@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TipologiasComponent } from './tipologias/tipologias.component';
 import { TipologiaFormComponent } from './tipologias/tipologia-form/tipologia-form.component';
+import { ComponentCommonModule } from '../common/component-common.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ComponentCommonModule
   ],
   declarations: [
     DashboardComponent,

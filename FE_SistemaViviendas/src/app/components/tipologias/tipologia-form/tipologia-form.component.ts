@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { element } from 'protractor';
 
 export class formHabitaciones {
   label: string;
@@ -17,6 +18,8 @@ export class TipologiaFormComponent implements OnInit {
 
   cantMax: number;
   habitaciones = new Array<string>();
+
+
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _location: Location,) { }
@@ -57,6 +60,14 @@ export class TipologiaFormComponent implements OnInit {
     }
 
     return label;
+  }
+
+  uploadImg(e) {
+    console.log(e)
+  }
+
+  uploadPlano(e) {
+
   }
 
   save() {

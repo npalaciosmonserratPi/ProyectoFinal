@@ -15,3 +15,17 @@
 .rt-color-primary {
   color: #ffe168;
 }
+
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffe168;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+*::-webkit-scrollbar:vertical {
+  width: 10px;
+}

@@ -9,7 +9,7 @@
             [ngClass]="{'is-invalid': (!f.controls.user?.valid && f.controls.user?.touched) || userInvalid}" 
             (blur)="userInvalid = false"
             id="userName" aria-describedby="userNameFeed" 
-            type="password" name="user" [(ngModel)]="userDto.userName" required>
+            type="text" name="user" [(ngModel)]="userDto.userName" required>
 
       <div *ngIf="(!f.controls.user?.valid && f.controls.user?.touched) || userInvalid" id="userNameFeed" class="invalid-feedback">
         Ingrese un usuario válido.
