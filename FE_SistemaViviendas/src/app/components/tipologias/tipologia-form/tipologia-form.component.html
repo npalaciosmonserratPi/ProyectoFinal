@@ -1,0 +1,114 @@
+<div class="card ">
+  <!-- <div class="card-header bg-transparent border-success">Header</div> -->
+  <div class="card-body">
+    <form #form="ngForm" (submit)="save()">
+
+      <div class="col-6 col-md-6"> 
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Nombre tipologia</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" required>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-12">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" 
+                    role="tab" aria-controls="details" aria-selected="true">Detalle
+            </button> 
+            <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button" 
+                    role="tab" aria-controls="drawing" aria-selected="false">Fotos
+            </button>
+            <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" 
+                    role="tab" aria-controls="note" aria-selected="false">Nota
+            </button>
+          </div>
+        </nav>
+        <div class="tab-content mt-3" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+              <div class="col-12 col-md-12 d-flex align-items-center">
+  
+                <div class="mb-3 col-4">
+                  <label for="exampleFormControlInput1" class="form-label">Superficie de Lote</label>
+                  <input type="text" class="form-control input-sup" id="exampleFormControlInput1">
+                </div>
+                
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Permite ampliación planta alta
+                  </label>
+                </div>
+              </div>
+              <div class="col-12 col-md-12 d-flex mt-3">
+                <div class="col-4 col-md-4">
+             
+                  <label for="exampleFormControlInput1" class="form-label">Cantidad max. de habitaciones</label>
+                  <div class="mb-3 col-4">
+                    <select class="form-select" name="habitaciones" (change)="select()" [(ngModel)]="cantMax">
+                      <option value=1>Monoamiente</option>
+                      <option value=2>1</option>
+                      <option value=3>2</option> 
+                      <option value=4>3</option>
+                    </select>
+                  </div>
+  
+                </div>
+
+                
+              <div class="col-8 col-md-8 d-flex flex-column align-items-center scroll">
+                <ng-template ngFor let-i="index" let-label [ngForOf]="habitaciones">
+                  <div class="details-vivienda" *ngIf="habitaciones.length != 0">
+                      <label><strong> {{label}}</strong></label>
+                      <div class="mb-3 col-12 d-flex justify-content-around">
+                        <div class="col-4">
+                          <label for="exampleFormControlInput1" class="form-label">m2 cubiertos</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="col-4">
+                          <label for="exampleFormControlInput1" class="form-label">Costo total</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                      </div>    
+                  </div>
+                </ng-template>
+              </div>
+           
+               
+              </div>
+             
+             
+          </div>
+        
+          <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
+            <div class="row">
+              <div class="col-6 col-md-6 col-sm-12">
+                <h4>Fotos</h4>
+                <app-upload-file (img)="uploadImg($event)"></app-upload-file>
+              </div>
+              <div class="col-6 col-md-6 col-sm-12 prueba">
+                <h4>Planos</h4>
+                <app-upload-file (img)="uploadPlano($event)"></app-upload-file>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Observaciones</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer bg-transparent ">
+    <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
+      <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Cancelar</button>
+      <button type="submit" class="btn btn-warning " [disabled]="!form.valid">Guardar</button>
+    </div>
+  </div> 
+</div>

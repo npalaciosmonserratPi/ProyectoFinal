@@ -1,3 +1,4 @@
+import { ComponentCommonModule } from './common/component-common.module';
 import { PagesModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,16 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { appReducers } from './app-reducer';
 import { environment } from '../environments/environment';
-import { SpinnerComponent } from './common/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SpinnerComponent
   ],
   imports: [
     BrowserModule,
+    ComponentCommonModule,
     APP_ROUTES,
     PagesModule,
     FormsModule,
