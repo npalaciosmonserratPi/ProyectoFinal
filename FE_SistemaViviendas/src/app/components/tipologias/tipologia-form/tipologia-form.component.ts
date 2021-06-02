@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { element } from 'protractor';
-
-export class formHabitaciones {
-  label: string;
-  m2: number;
-  precio: number;
-}
+import { SupCubiertaModel, TipologiaModel } from '../models/tipologia.model';
 
 @Component({
   selector: 'app-tipologia-form',
@@ -16,25 +10,56 @@ export class formHabitaciones {
 })
 export class TipologiaFormComponent implements OnInit {
 
-  cantMax: number;
-  habitaciones = new Array<string>();
+  editorStyle = { 
+    height: '400px',
+    backgroundColor: '#ffff',
+  }
 
+  config = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+  
+      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+      [{ 'direction': 'rtl' }],                         // text direction
+  
+      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'font': [] }],
+      [{ 'align': [] }],
+  
+      ['clean'],                                         // remove formatting button
+    ]
+  };
 
+  tipologia = new TipologiaModel();
 
   constructor(private _activatedRoute: ActivatedRoute,
-              private _location: Location,) { }
+              private _location: Location) {
+               }
 
   ngOnInit() {
+
+    this.tipologia.detalle = new Array<SupCubiertaModel>();
   }
 
   select() {
    
-    this.habitaciones = [];
-    for (let i = 0; i < this.cantMax; i++) {
-      
-      let label = this.getLabel(i); 
+    this.tipologia.detalle = new Array<SupCubiertaModel>();
 
-      this.habitaciones.push(label);
+    for (let i = 0; i < this.tipologia.cantMaxHabitaciones; i++) {
+      
+      let detalle = new SupCubiertaModel()
+      detalle.name = this.getLabel(i); 
+      detalle.supCubierta = '';
+      detalle.costo = '';
+
+      this.tipologia.detalle.push(detalle);
     }
   }
 
@@ -43,19 +68,19 @@ export class TipologiaFormComponent implements OnInit {
     let label: string
     switch (i) {
       case 0: 
-        label = 'Monoambiente';
+        label = 'Vivienda Monoambiente';
         break
 
       case 1: 
-        label = '1 habitación';
+        label = 'Vivienda de 1 habitación';
         break
       
       case 2: 
-        label = '2 habitaciones';
+        label = 'Vivienda de 2 habitaciones';
         break
 
       case 3: 
-        label = '3 habitaciones';
+        label = 'Vivienda de 3 habitaciones';
         break
     }
 
@@ -63,16 +88,22 @@ export class TipologiaFormComponent implements OnInit {
   }
 
   uploadImg(e) {
-    console.log(e)
+    this.tipologia.fotos = e;
   }
 
   uploadPlano(e) {
-
+    this.tipologia.planos = e;
   }
 
   save() {
-    
+    console.log(this.tipologia)
   }
+
+  // setFormat() {
+  //   var options = { style: 'currency', currency: 'ARS' };
+  //   var numberFormat = new Intl.NumberFormat('es-AR', options);
+  //   this.tipologia.¿ = numberFormat.format(this.costo).substr(1)
+  // }
 
   close() {
     this._location.back();

@@ -5,12 +5,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TipologiasComponent } from './tipologias/tipologias.component';
 import { TipologiaFormComponent } from './tipologias/tipologia-form/tipologia-form.component';
 import { ComponentCommonModule } from '../common/component-common.module';
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ComponentCommonModule
+    ComponentCommonModule,
+    QuillModule.forRoot()
   ],
   declarations: [
     DashboardComponent,
