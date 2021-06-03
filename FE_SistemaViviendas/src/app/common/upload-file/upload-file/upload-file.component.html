@@ -4,7 +4,7 @@
         (change)="selectImage($event.target.files)" multiple>
 </div>
 
-<div class="img-content">
+<div class="img-content" *ngIf="imgTemp.length != 0">
   <ng-template ngFor let-img let-i="index" [ngForOf]="imgTemp" >
     <div class="img-content__card">
       <div class="text-center img-content__card-file">
@@ -16,6 +16,11 @@
     </div>
   </ng-template>
 </div>
+
+<app-empty-state *ngIf="imgTemp.length == 0" [title]="'No se seleccionó imagenes'"
+                [description]="'Por favor, seleccione las imágenes a cargar'">
+</app-empty-state>
+
 
 
 

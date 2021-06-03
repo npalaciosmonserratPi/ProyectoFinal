@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { element } from 'protractor';
+import { AppState } from 'src/app/app-reducer';
+import { ActivarLoadingAction, DesactivarLoadingAction } from '../../reducer/ui.accions';
 
 @Component({
   selector: 'app-upload-file',
@@ -12,13 +15,17 @@ export class UploadFileComponent implements OnInit {
 
   imgTemp: any[] = [];
 
-  constructor() { }
+  constructor(private _store: Store<AppState>) {
+    
+  }
 
   ngOnInit() {
   }
 
   
   selectImage(file: FileList) {
+    this._store.dispatch(new ActivarLoadingAction());
+
     if(!file) {
       this.imgTemp = null;
       return;
@@ -31,6 +38,7 @@ export class UploadFileComponent implements OnInit {
         this.imgTemp.push(reader.result);
 
         this.img.emit(this.imgTemp);
+        this._store.dispatch(new DesactivarLoadingAction())
       }
     }
   }
