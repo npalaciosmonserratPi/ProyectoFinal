@@ -10,18 +10,14 @@
   }
 }
 
-.card {
-  border: none;
-  background-color: #f7f7f7;
-}
-
-.card-body {
-  height: 78vh;
+.tipologiaForm {
+  height: 73vh;
 }
 
 .card-footer {
   &__btn {
     margin-right: 0.5rem;
+    margin-bottom: 0;
   }
 }
 

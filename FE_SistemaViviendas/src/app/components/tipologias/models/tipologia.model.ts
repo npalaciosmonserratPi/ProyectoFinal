@@ -2,6 +2,7 @@ export class TipologiaModel {
     nombre: string;
     supLote: string;
     supCochera: string;
+    costom2: any;
     plantaAlta: boolean;
     cantMaxHabitaciones: number;
     detalle: Array<SupCubiertaModel>;
@@ -13,5 +14,4 @@ export class TipologiaModel {
 export class SupCubiertaModel {
     name: string;
     supCubierta: string;
-    costo: string;
 }

@@ -1,6 +1,6 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TipologiasComponent } from './tipologias/tipologias.component';
 import { TipologiaFormComponent } from './tipologias/tipologia-form/tipologia-form.component';
@@ -23,6 +23,9 @@ import { QuillModule } from 'ngx-quill'
     DashboardComponent,
     TipologiasComponent,
     TipologiaFormComponent
+  ],
+  providers: [
+    CurrencyPipe
   ]
 })
 export class ComponentsModule { }

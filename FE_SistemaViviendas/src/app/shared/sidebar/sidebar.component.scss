@@ -4,7 +4,7 @@
   align-items: center;
   //width: 20rem;
   height: 100%;
-  background-color: #f7f7f7b9;
+  background-image: linear-gradient(to top, #f5f1f1 78%, #ffe168 95%);
 
   &__img-wrapper {
     width: 10rem;
@@ -40,9 +40,8 @@
     cursor: pointer;
 
     &--icon {
-      margin-right: 2rem;
-      font-size: 2rem;
-      width: 2rem;
+      margin-right: 1rem;
+      font-size: 1.5rem;
     }
 
     &--name {

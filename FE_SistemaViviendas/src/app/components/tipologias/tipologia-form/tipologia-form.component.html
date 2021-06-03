@@ -1,153 +1,154 @@
-<form #form="ngForm" (submit)="save()">
-  <div class="card">
-    <div class="card-body">
-
-        <div class="col-6 col-md-6"> 
-          <div class="mb-3">
-            <label class="form-label">Nombre tipología</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="tipologia.nombre" required>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-12">
-
-          <!-- NAV TABS -->
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" 
-                      role="tab" aria-controls="details" aria-selected="true">Detalle
-              </button> 
-              <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" 
-                      role="tab" aria-controls="photo" aria-selected="false">Fotos
-              </button>
-              <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button" 
-                      role="tab" aria-controls="drawing" aria-selected="false">Planos
-              </button>
-              <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" 
-                      role="tab" aria-controls="note" aria-selected="false">Nota
-              </button>
-            </div>
-          </nav>
-
-          <!-- TABS -->
-          <div class="tab-content mt-3" id="nav-tabContent">
-
-            <!-- GENERALES -->
-            <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-              <div class="row">
-
-                <!-- Columna 1 -->
-                <div class="col-12 col-md-12 col-sm-12 d-flex flex-wrap justify-content-between align-items-center">
+<div class="row">
+  <form #form="ngForm" (submit)="save()">
     
-                  <div class="me-2">
-                    <label  class="form-label">Superficie de lote</label>
-                    <div class="input-group input-sup">
-                      <input type="text" class="form-control" name="supLote" [(ngModel)]="tipologia.supLote" required>
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">m²</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="">
-                    <label class="form-label">Superficie cochera</label> 
-                    <div class="input-group input-sup">
-                      <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera" required>
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">m²</span>
-                      </div>
-                    </div>
-                  </div>
+      <div class="tipologiaForm">
+          <div class="col-6 col-md-6"> 
+            <div class="mb-3">
+              <label class="form-label">Nombre tipología</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="tipologia.nombre" required>
+            </div>
+          </div>
 
-                  <div class="">
-                    <label class="form-label">Costo total m² cubierto</label> 
-                    <div class="input-group input-sup">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">$</span>
-                      </div>
-                      <input type="text" class="form-control" name="costo" required>
-                    </div>
-                  </div>
+          <div class="col-12 col-md-12">
 
-                  <div class="form-check mt-4">
-                    <input class="form-check-input" type="checkbox" name="ampliacion" [(ngModel)]="tipologia.plantaAlta">
-                    <label class="form-check-label">
-                      Permite ampliación planta alta
-                    </label>
-                  </div>
-                  
-                </div> 
+            <!-- NAV TABS -->
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" 
+                        role="tab" aria-controls="details" aria-selected="true">Detalle
+                </button> 
+                <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" 
+                        role="tab" aria-controls="photo" aria-selected="false">Fotos
+                </button>
+                <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button" 
+                        role="tab" aria-controls="drawing" aria-selected="false">Planos
+                </button>
+                <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" 
+                        role="tab" aria-controls="note" aria-selected="false">Nota
+                </button>
+              </div>
+            </nav>
 
-                <!-- Columna 2 -->
-                <div class="col-12 col-md-12 col-sm-12 mt-4 d-flex">
+            <!-- TABS -->
+            <div class="tab-content mt-3" id="nav-tabContent">
 
-                  <div class="col-5 col-md-5">
-                    <label class="form-label">Cantidad máxima de habitaciones</label>
-                    <select class="form-select" name="habitaciones" (change)="select()" [(ngModel)]="tipologia.cantMaxHabitaciones" required>
-                      <option value=1>Monoamiente</option>
-                      <option value=2>1</option>
-                      <option value=3>2</option> 
-                      <option value=4>3</option>
-                    </select>
-                  </div>
-                  <div class="col-7 col-md-7">
-                    <label *ngIf="tipologia.detalle.length != 0">Superficie cubierta</label>
-                    <div class=" d-flex mt-6 flex-wrap scroll">
-  
-                      <ng-template ngFor let-i="index" let-item [ngForOf]="tipologia.detalle">
-                        <div class="details-vivienda " *ngIf="tipologia.detalle.length != 0" >
-                          <label>{{item.name}}</label>
-                          <div class="input-group mb-3">
-                            <input type="number" class="form-control" name="sup" [(ngModel)]="item.supCubierta" required>
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1">m²</span>
-                            </div>
-                          </div>
+              <!-- GENERALES -->
+              <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                <div class="row">
+
+                  <!-- Columna 1 -->
+                  <div class="col-12 col-md-12 col-sm-12 d-flex flex-wrap justify-content-between align-items-center">
+      
+                    <div class="me-2">
+                      <label  class="form-label">Superficie de lote</label>
+                      <div class="input-group input-sup">
+                        <input type="text" class="form-control" name="supLote" [(ngModel)]="tipologia.supLote" required>
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">m²</span>
                         </div>
-                      </ng-template>
-                      
+                      </div>
+                    </div>
+                    
+                    <div class="me-2">
+                      <label class="form-label">Superficie cochera</label> 
+                      <div class="input-group input-sup">
+                        <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera" required>
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">m²</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="me-2">
+                      <label class="form-label">Costo total m² cubierto</label> 
+                      <div class="input-group input-sup">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2" required>
+                      </div>
+                    </div>
+
+                    <div class="form-check mt-4">
+                      <input class="form-check-input" type="checkbox" name="ampliacion">
+                      <label class="form-check-label">
+                        Permite ampliación planta alta
+                      </label>
+                    </div>
+                    
+                  </div> 
+
+                  <!-- Columna 2 -->
+                  <div class="col-12 col-md-12 col-sm-12 mt-4 d-flex">
+
+                    <div class="col-5 col-md-5">
+                      <label class="form-label">Cantidad máxima de habitaciones</label>
+                      <select class="form-select" name="habitaciones" (change)="select()" [(ngModel)]="tipologia.cantMaxHabitaciones" required>
+                        <option value=1>Monoamiente</option>
+                        <option value=2>1</option>
+                        <option value=3>2</option> 
+                        <option value=4>3</option>
+                      </select>
+                    </div>
+                    <div class="col-7 col-md-7" *ngIf="tipologia.detalle.length != 0">
+                        <label>Superficie cubierta</label>
+                        <div class=" d-flex mt-6 flex-wrap scroll">
+      
+                          <ng-template ngFor let-i="index" let-item [ngForOf]="tipologia.detalle">
+                            <div class="details-vivienda animate__animated animate__pulse">
+                              <label>{{item.name}}</label>
+                              <div class="input-group mb-3">
+                                <input type="number" class="form-control" name="sup" [(ngModel)]="item.supCubierta" required>
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text" id="basic-addon1">m²</span>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-template>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-7 pt-5" *ngIf="tipologia.detalle.length == 0">
+                      <app-empty-state  [title]="'Cantidad de habitaciones'" [description]="'Por favor, seleccione cantidad máxima de habitaciones'"></app-empty-state>
                     </div>
                   </div>
-                  
+                </div>
+              </div>
+            
+              <!-- FOTO -->
+              <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
+                <div class="row">
+                  <div class="col-12 col-md-12 col-sm-12">
+                    <app-upload-file (img)="uploadImg($event)"></app-upload-file>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PLANOS -->
+              <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
+                <div class="row">
+                  <div class="col-12 col-md-12 col-sm-12">
+                    <app-upload-file (img)="uploadPlano($event)"></app-upload-file>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- DESCRIPCION -->
+              <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
+                <div class="mb-3">
+                  <quill-editor  [styles]="editorStyle" [modules]="config" name="editor" [(ngModel)]="tipologia.descripcion"></quill-editor>
                 </div>
               </div>
             </div>
           
-            <!-- FOTO -->
-            <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
-              <div class="row">
-                <div class="col-12 col-md-12 col-sm-12">
-                  <app-upload-file (img)="uploadImg($event)"></app-upload-file>
-                </div>
-              </div>
-            </div>
-
-            <!-- PLANOS -->
-            <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
-              <div class="row">
-                <div class="col-12 col-md-12 col-sm-12">
-                  <app-upload-file (img)="uploadPlano($event)"></app-upload-file>
-                </div>
-              </div>
-            </div>
-            
-            <!-- DESCRIPCION -->
-            <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
-              <div class="mb-3">
-                <quill-editor  [styles]="editorStyle" [modules]="config" name="editor" [(ngModel)]="tipologia.descripcion"></quill-editor>
-              </div>
-            </div>
           </div>
-        
-        </div>
 
-    </div>
-    <div class="card-footer bg-transparent">
-      <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
-        <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Cancelar</button>
-        <button type="submit" class="btn btn-warning " [disabled]="!form.valid">Guardar</button>
       </div>
-    </div> 
-  </div>
-</form>
- 
+      <div class="card-footer bg-transparent">
+        <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
+          <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Cancelar</button>
+          <button type="submit" class="btn btn-warning " [disabled]="!form.valid">Guardar</button>
+        </div>
+      </div> 
+   
+  </form>
+</div>
