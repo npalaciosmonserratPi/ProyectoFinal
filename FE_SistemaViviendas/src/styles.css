@@ -16,6 +16,14 @@
   color: #ffe168;
 }
 
+.body-section {
+  height: 73vh;
+}
+
+*.swal2-styled.swal2-confirm {
+  color: black;
+}
+
 *::-webkit-scrollbar {
   -webkit-appearance: none;
 }

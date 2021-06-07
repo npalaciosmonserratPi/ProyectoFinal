@@ -13,4 +13,24 @@
     </div>
   </div>
   
+  <div class="col-12 col-12 mt-3 scroll">
+    <div class=" card_tipologia">
+      <img class="col-4 col-md-4 card_tipologia__img" src="../../../assets/casa.jpg" alt="">
+      <div class="col-4">
+        <p>Nombre</p>
+        <p>Superficie lote</p>
+        <p>Superficie cubierta</p>
+      </div>
+      <div class="col-4">
+        <p>Costo por m2 semicubierto</p>
+        <p>Costo por m2 cubierto</p>
+        <p>Cantidad máxima de habitaciones</p>
+      </div>
+      <div class="col-1 card_tipologia__actions">
+        <i class="fa fa-eye card_tipologia__actions--hover" (click)="consult('prueba')"></i>
+        <i class="fa fa-pencil card_tipologia__actions--hover" (click)="edit('prueba')" ></i>
+        <i class="fa fa-ban card_tipologia__actions--hover" style="color: red;" (click)="annul()"></i>
+      </div>
+    </div>
+  </div>
 </div>

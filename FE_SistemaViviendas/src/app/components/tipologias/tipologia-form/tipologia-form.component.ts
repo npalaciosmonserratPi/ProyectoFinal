@@ -43,6 +43,7 @@ export class TipologiaFormComponent implements OnInit {
     ]
   };
 
+  id: string;
   tipologia = new TipologiaModel();
 
   constructor(private _activatedRoute: ActivatedRoute,
@@ -54,6 +55,10 @@ export class TipologiaFormComponent implements OnInit {
 
   ngOnInit() {
     this.tipologia.detalle = new Array<SupCubiertaModel>();
+
+    this._activatedRoute.params.subscribe(params => {
+      this.id = params.id;
+    });
   }
 
   select() {
