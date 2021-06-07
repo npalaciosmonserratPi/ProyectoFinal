@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CurrencyPipe, Location } from '@angular/common';
 import { SupCubiertaModel, TipologiaModel } from '../models/tipologia.model';
+import { TipologiasService } from '../tipologias.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app-reducer';
+import { ActivarLoadingAction, DesactivarLoadingAction } from '../../../common/reducer/ui.accions';
+import * as alerts from '../../../common/alert/alert';
+
 
 @Component({
   selector: 'app-tipologia-form',
@@ -41,7 +47,9 @@ export class TipologiaFormComponent implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _location: Location,
-              private _currencyPipe: CurrencyPipe) {
+              private _currencyPipe: CurrencyPipe,
+              private _tipologyService: TipologiasService,
+              private _store: Store<AppState>) {
                }
 
   ngOnInit() {
@@ -69,11 +77,21 @@ export class TipologiaFormComponent implements OnInit {
   }
 
   save() {
-    console.log(this.tipologia)
+    this._store.dispatch(new ActivarLoadingAction);
+    this._tipologyService.createTipology(this.tipologia).subscribe((resp) => {
+
+      alerts.SuccesMessage('Tipología creada con éxito.');
+      this._store.dispatch(new DesactivarLoadingAction);
+      this._location.back();
+
+    }, error => {
+      alerts.ErrorMessage('Error al crear tipología');
+      this._store.dispatch(new DesactivarLoadingAction);
+    })
   }
 
   setFormat() {
-    this.tipologia.costom2 = this._currencyPipe.transform(this.tipologia.costom2, '$ ');
+    this.tipologia.costom2Cubierto = this._currencyPipe.transform(this.tipologia.costom2Cubierto, '$ ');
   }
 
   close() {

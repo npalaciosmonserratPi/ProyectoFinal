@@ -41,6 +41,14 @@
   background-color: rgba(255, 255, 255, 0.452);
 }
 
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: #ffe168 !important;
+  box-shadow: none !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 225, 104, 0.2) !important;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
