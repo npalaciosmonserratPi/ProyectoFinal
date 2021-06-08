@@ -13,14 +13,22 @@ export class TipologiasService {
   constructor( private _http: HttpClient) { }
 
   getTipologies() {
-
+    return this._http.post(`${this.url}/'tipologia/get'`, {});
   }
 
   createTipology(tipology: TipologiaModel) {
     console.log("tipologia a crear", tipology);
-    let urlCreate = this.url + '';
 
-    return this._http.post(urlCreate, tipology);
+    return this._http.post(`${this.url}/'tipologia/create'`, tipology);
+  }
+
+  editTipology(id: string) {
+    return this._http.post(`${this.url}/'tipologia/edit'`, id);
+
+  }
+
+  annulTipology(id: string) {
+    return this._http.post(`${this.url}/'tipologia/annul'`, id);
   }
   
 }

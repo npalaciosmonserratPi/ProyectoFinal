@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as alert from '../../common/alert/alert';
+import { TipologiaModel } from './models/tipologia.model';
+import { TipologiasService } from './tipologias.service';
 
 @Component({
   selector: 'app-tipologias',
@@ -9,10 +11,19 @@ import * as alert from '../../common/alert/alert';
 })
 export class TipologiasComponent implements OnInit {
 
+  tipologyList = new Array<TipologiaModel>();
+
   constructor(private _router: Router,
-              private _activatedRoute: ActivatedRoute) { }
+              private _activatedRoute: ActivatedRoute,
+              private _tipologyService: TipologiasService) { }
 
   ngOnInit() {
+  }
+
+  getTipologies() {
+    this._tipologyService.getTipologies().subscribe((resp) => {
+
+    });
   }
 
   add() {
