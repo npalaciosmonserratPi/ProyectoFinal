@@ -10,10 +10,6 @@
   }
 }
 
-.tipologiaForm {
-  height: 73vh;
-}
-
 .card-footer {
   &__btn {
     margin-right: 0.5rem;
@@ -52,4 +48,16 @@
 
 .form-select {
   width: 10rem;
+}
+
+.form-switch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
+}
+
+.form-check-input {
+  width: 3rem;
+  height: 1.5rem;
 }

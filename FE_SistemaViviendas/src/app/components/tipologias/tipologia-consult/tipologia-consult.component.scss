@@ -1,0 +1,11 @@
+.tab-content {
+  padding-left: 1rem;
+}
+
+.nav-link {
+  color: black;
+
+  &.active {
+    background-color: #ffcc00;
+  }
+}

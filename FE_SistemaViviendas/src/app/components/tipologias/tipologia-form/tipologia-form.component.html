@@ -1,7 +1,7 @@
 <div class="row">
   <form #form="ngForm" (submit)="save()">
     
-      <div class="tipologiaForm">
+      <div class="body-section">
           <div class="col-6 col-md-6"> 
             <div class="mb-3">
               <label class="form-label">Nombre tipología</label>
@@ -52,10 +52,20 @@
                     <div class="me-2">
                       <label class="form-label">Superficie cochera</label> 
                       <div class="input-group input-sup">
-                        <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera" required>
+                        <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">m²</span>
                         </div>
+                      </div>
+                    </div>
+
+                    <div class="me-2">
+                      <label class="form-label">Costo total m² semi-cubierto</label> 
+                      <div class="input-group input-sup">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2SemiCubierto">
                       </div>
                     </div>
 
@@ -65,15 +75,13 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">$</span>
                         </div>
-                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2" required>
+                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2Cubierto" required>
                       </div>
                     </div>
 
-                    <div class="form-check mt-4">
-                      <input class="form-check-input" type="checkbox" name="ampliacion">
-                      <label class="form-check-label">
-                        Permite ampliación planta alta
-                      </label>
+                    <div class="form-check form-switch me-2">
+                      <label class="form-check-label" for="flexSwitchCheckChecked">Permite ampliación planta alta</label>
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="ampliacion" checked [(ngModel)]="tipologia.plantaAlta">
                     </div>
                     
                   </div> 
@@ -91,7 +99,7 @@
                       </select>
                     </div>
                     <div class="col-7 col-md-7" *ngIf="tipologia.detalle.length != 0">
-                        <label>Superficie cubierta</label>
+                        <h5>Superficie cubierta</h5>
                         <div class=" d-flex mt-6 flex-wrap scroll">
       
                           <ng-template ngFor let-i="index" let-item [ngForOf]="tipologia.detalle">
@@ -118,7 +126,7 @@
               <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
                 <div class="row">
                   <div class="col-12 col-md-12 col-sm-12">
-                    <app-upload-file (img)="uploadImg($event)"></app-upload-file>
+                    <app-upload-image (listImg)="uploadImg($event)" [OnSetPrincipal]="true"></app-upload-image>   
                   </div>
                 </div>
               </div>
@@ -127,7 +135,7 @@
               <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
                 <div class="row">
                   <div class="col-12 col-md-12 col-sm-12">
-                    <app-upload-file (img)="uploadPlano($event)"></app-upload-file>
+                    <app-upload-image (listImg)="uploadPlano($event)"></app-upload-image>
                   </div>
                 </div>
               </div>
@@ -146,7 +154,7 @@
       <div class="card-footer bg-transparent">
         <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
           <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Cancelar</button>
-          <button type="submit" class="btn btn-warning " [disabled]="!form.valid">Guardar</button>
+          <button type="submit" class="btn btn-warning" [disabled]="!form.valid">Guardar</button>
         </div>
       </div> 
    
