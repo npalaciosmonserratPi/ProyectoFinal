@@ -1,5 +1,5 @@
 
-<div class="mb-3 mt-2 col-6">
+<div class="mb-3 mt-2 col-6 d-flex">
   <input class="form-control" type="file" id="formFile" accept=".png, .jpg" 
         (change)="selectImage($event.target.files)" multiple>
 </div>
@@ -7,21 +7,17 @@
 <div class="img-content" *ngIf="imgTemp.length != 0">
   <ng-template ngFor let-img let-i="index" [ngForOf]="imgTemp" >
     <div class="img-content__card animate__animated animate__fadeInDown">
-      <div class="text-center img-content__card-file">
-        <div class="img-content__card-file--check" *ngIf="OnSetPrincipal">
-          <input class="form-check-input" (change)="setPrincipal(img)" type="checkbox" [checked]="img.isPricipal" [disabled]="img.isPricipal">
+      <div class="text-center img-content__card-file mt-1 mb-3">
+        <div class="img-content__card-file--iconGroup">
+          <i class="fa fa-check-circle img-content__card-file--icon me-2" 
+              (click)="setPrincipal(img)" aria-hidden="true"
+              [ngClass]="{'iconColor': img.isPricipal}" *ngIf="OnSetPrincipal">
+          </i>
+          <i class="fa fa-times img-content__card-file--icon" (click)="delete(i)"></i>
         </div>
        
         <img [src]="img.url" class="rounded img-content__card-file--img" alt="...">
       </div>
-      <div class="mt-2 mb-3 img-content__card-file--btn">
-        <!-- <div class="form-check form-switch">
-          <label class="form-check-label" for="flexSwitchCheckChecked">Foto principal</label>
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" (change)="setPrincipal(img)" [checked]="img.isPricipal" [disabled]="img.isPricipal">
-        </div> -->
-        <button type="button" class="btn btn-danger" (click)="delete(i)"><i class="fa fa-trash"></i></button>
-      </div>
-    
     </div>
   </ng-template>
 </div>

@@ -52,7 +52,7 @@
                     <div class="me-2">
                       <label class="form-label">Superficie cochera</label> 
                       <div class="input-group input-sup">
-                        <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera" required>
+                        <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">m²</span>
                         </div>
@@ -65,7 +65,7 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">$</span>
                         </div>
-                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2SemiCubierto" required>
+                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2SemiCubierto">
                       </div>
                     </div>
 
@@ -154,7 +154,7 @@
       <div class="card-footer bg-transparent">
         <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
           <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Cancelar</button>
-          <button type="submit" class="btn btn-warning " [disabled]="!form.valid">Guardar</button>
+          <button type="submit" class="btn btn-warning" [disabled]="!form.valid">Guardar</button>
         </div>
       </div> 
    
