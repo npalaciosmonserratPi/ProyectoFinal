@@ -31,12 +31,12 @@
           <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
             <div class="row">
               <div class="col-12 col-md-12">
-                <p>Superficie de Lote</p>
-                <p>Superficie de cochera</p>
-                <p>Precio m² superficie cubierta</p>
-                <p>Precio m² superfice semi-cubierta</p>
-                <p>Permite ampliacion planta alta</p>
-                <p>Cantidad máxima de habitaciones</p>
+                <p><strong>Superficie de Lote:</strong> {{ tipologia.nombre }}</p>
+                <p><strong>Superficie de cochera:</strong> {{ tipologia.supCochera }}</p>
+                <p><strong>Precio m² superfice semi-cubierta:</strong> {{ tipologia.costom2SemiCubierto }}</p>
+                <p><strong>Precio m² superficie cubierta:</strong> {{ tipologia.costom2Cubierto }}</p>
+                <p><strong>Permite ampliacion planta alta:</strong> {{ tipologia.plantaAlta ? 'Si' : 'No' }}</p>
+                <p><strong>Cantidad máxima de habitaciones:</strong> {{ tipologia.cantMaxHabitaciones }}</p>
               </div>
               
               <div class="col-6 col-md-6">
@@ -48,14 +48,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Monoambiente</td>
-                      <td>30 <span>m²</span></td>
-                    </tr>
-                    <tr>
-                      <td>1 habitación</td>
-                      <td>40 <span>m²</span></td>
-                    </tr>
+                    <!-- <ng-template ngFor let-item [ngForOf]="tipologia.detalle">
+                     -->
+                      <tr *ngFor="let item of tipologia.detalle">
+                        <td>{{item.name}}</td>
+                        <td>{{item.supCubierta}} <span>m²</span></td>
+                      </tr>
+                    <!-- </ng-template> -->
                   </tbody>
                 </table>
               </div>
@@ -66,7 +65,7 @@
           <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
             <div class="row">
               <div class="col-12 col-md-12 col-sm-12">
-                 //TODO: tengo que continuar
+                 //TODO: fotos
               </div>
             </div>
           </div>
@@ -75,14 +74,14 @@
           <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
             <div class="row">
               <div class="col-12 col-md-12 col-sm-12">
-                
+                //TODO: planos
               </div>
             </div>
           </div>
           
           <!-- DESCRIPCION -->
           <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
-            
+            <p [innerHtml]="tipologia.descripcion"></p>
           </div>
         </div>
         

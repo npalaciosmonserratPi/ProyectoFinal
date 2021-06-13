@@ -1,28 +1,36 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { QuillModule } from 'ngx-quill'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { ComponentCommonModule } from '../common/component-common.module';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+/** Tipologias */
 import { TipologiasComponent } from './tipologias/tipologias.component';
 import { TipologiaFormComponent } from './tipologias/tipologia-form/tipologia-form.component';
-import { ComponentCommonModule } from '../common/component-common.module';
-import { QuillModule } from 'ngx-quill'
+import { TipologiaConsultComponent } from './tipologias/tipologia-consult/tipologia-consult.component';
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
     ComponentCommonModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    NgbModule,
   ],
   declarations: [
     DashboardComponent,
     TipologiasComponent,
-    TipologiaFormComponent
+    TipologiaFormComponent,
+    TipologiaConsultComponent
   ],
   exports: [
     DashboardComponent,
     TipologiasComponent,
-    TipologiaFormComponent
+    TipologiaFormComponent,
+    TipologiaConsultComponent
   ],
   providers: [
     CurrencyPipe

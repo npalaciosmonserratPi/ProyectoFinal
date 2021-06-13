@@ -14,24 +14,63 @@
     </button>
   </div>
   
-  <div class="col-12 col-12 mt-3 scroll">
-    <div class="card_tipologia">
-      <img class="col-4 col-md-4 card_tipologia__img" src="../../../assets/casa.jpg" alt="">
-      <div class="col-4">
-        <p>Nombre</p>
-        <p>Superficie lote</p>
-        <p>Superficie cubierta</p>
+  <div class="col-12 col-12 mt-3 scroll" tooltipClass="myClass" *ngIf="tipologyList.length != 0">
+    <ng-template ngFor let-item [ngForOf]="tipologyList">
+    
+      <div class="card_tipologia mt-2" placement="left" [ngbTooltip]="!item.activo ? tooltipSuspend : tooltipActive" >
+        <div class="state" [ngClass]="{'state-suspend ': !item.activo,
+                                        'state-active': item.activo}">
+        </div>
+        <ng-template [ngIf]="item.fotos">
+          <ng-template ngFor let-img [ngForOf]="item.fotos">
+            <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__img" [src]="img.url" alt="">
+          </ng-template>  
+        </ng-template>
+        <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__img" src="../../../assets/no-image.png" alt="">
+        <div class="col-4">
+          <p> <strong> Nombre:</strong> {{ item.nombre }}</p>
+          <p> <strong> Superficie lote: </strong> {{ item.supLote }} m²</p>
+          <p *ngIf="item.supCochera"><strong>Superficie cubierta:</strong> {{ item.supCochera }} m²</p>
+        </div>
+        <div class="col-4">
+          <p *ngIf="item.costom2SemiCubierto"><strong>Costo por m2 semicubierto:</strong> {{ item.costom2SemiCubierto }}</p>
+          <p><strong>Costo por m2 cubierto:</strong> {{ item.costom2Cubierto }}</p>
+          <p><strong>Cantidad máxima de habitaciones:</strong> {{ item.cantMaxHabitaciones }}</p>
+        </div>
+        <div class="col-1 card_tipologia__actions">
+          <div placement="top" [ngbTooltip]="tooltipVer" tooltipClass="myClass">
+            <i class="fa fa-eye card_tipologia__actions--icon" (click)="consult(item.id)"></i>
+
+          </div>
+          <div placement="top" [ngbTooltip]="tooltipEditar" tooltipClass="myClass">
+            <i class="fa fa-pencil card_tipologia__actions--icon" (click)="edit(item.id)" ></i>
+          </div>
+          <div placement="top" [ngbTooltip]="tooltipSuspender" tooltipClass="myClass">
+            <i class="fa fa-ban card_tipologia__actions--icon" style="color: red;" (click)="annul(item.id)"></i>
+
+          </div>
+          
+        </div>
       </div>
-      <div class="col-4">
-        <p>Costo por m2 semicubierto</p>
-        <p>Costo por m2 cubierto</p>
-        <p>Cantidad máxima de habitaciones</p>
-      </div>
-      <div class="col-1 card_tipologia__actions">
-        <i class="fa fa-eye card_tipologia__actions--hover" (click)="consult('prueba')"></i>
-        <i class="fa fa-pencil card_tipologia__actions--hover" (click)="edit('prueba')" ></i>
-        <i class="fa fa-ban card_tipologia__actions--hover" style="color: red;" (click)="annul()"></i>
-      </div>
-    </div>
+    </ng-template>
+    
   </div>
+  <div class="mt-3">
+    <app-empty-state *ngIf="tipologyList.length == 0" [title]="'No existen tipologias cargadas'"
+      [description]="'Presione en Agregar para crear una nueva tipologia'">
+    </app-empty-state>
+  </div>
+  
+  
 </div>
+
+
+<ng-template #tooltipEditar>Editar </ng-template>
+
+<ng-template #tooltipSuspender>Suspender </ng-template>
+
+<ng-template #tooltipVer>Ver más informacion </ng-template>
+
+<ng-template #tooltipSuspend>Suspendida </ng-template>
+
+<ng-template #tooltipActive>Activa </ng-template>

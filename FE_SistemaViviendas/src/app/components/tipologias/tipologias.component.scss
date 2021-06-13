@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
+  padding-right: 1rem;
 
   &__img {
     width: 11rem;
@@ -30,8 +30,26 @@
     display: flex;
     justify-content: space-around;
 
-    &--hover:hover {
+    &--icon {
+      font-size: 1.5rem;
+    }
+
+    &--icon:hover {
       cursor: pointer;
     }
   }
+}
+
+.card_tipologia:hover {
+  cursor: pointer;
+}
+
+.myClass .tooltip-inner {
+  background-color: #ffe168;
+  color: black;
+}
+
+.myClass .arrow::before {
+  background-color: #ffe168;
+  color: black;
 }
