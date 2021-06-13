@@ -42,10 +42,18 @@ export class TipologiasComponent implements OnInit {
   }
 
   annul(id: string) {
-    alert.ConfirmAlert('Anular tipología', 'Esta seguro de anluar la tipolodía', 'Anular', 'Cancelar').then(result => {
+    alert.ConfirmAlert('Anular tipología', 'Esta seguro de anluar la tipología', 'Suspender', 'Cancelar').then(result => {
       if(result.isConfirmed) {
         this._store.dispatch(new EliminarTipologiaAction(id));
         console.log(this.tipologyList)
+      }
+    })
+  }
+
+  habilitar(id: string) {
+    alert.ConfirmAlert('Habilitar tipología', 'Esta seguro de habilitar la tipología', 'Habilitar', 'Cancelar').then(result => {
+      if(result.isConfirmed) {
+        
       }
     })
   }

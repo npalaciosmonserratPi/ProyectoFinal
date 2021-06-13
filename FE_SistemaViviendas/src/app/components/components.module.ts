@@ -15,6 +15,7 @@ import { TipologiaConsultComponent } from './tipologias/tipologia-consult/tipolo
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
     ComponentCommonModule,
     QuillModule.forRoot(),

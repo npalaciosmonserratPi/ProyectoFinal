@@ -38,7 +38,8 @@
                 <p><strong>Permite ampliacion planta alta:</strong> {{ tipologia.plantaAlta ? 'Si' : 'No' }}</p>
                 <p><strong>Cantidad máxima de habitaciones:</strong> {{ tipologia.cantMaxHabitaciones }}</p>
               </div>
-              
+              <hr>
+              <h5>Detalle por cantidad de habitación</h5>
               <div class="col-6 col-md-6">
                 <table class="table table-striped">
                   <thead>
@@ -48,13 +49,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <ng-template ngFor let-item [ngForOf]="tipologia.detalle">
-                     -->
-                      <tr *ngFor="let item of tipologia.detalle">
-                        <td>{{item.name}}</td>
-                        <td>{{item.supCubierta}} <span>m²</span></td>
-                      </tr>
-                    <!-- </ng-template> -->
+                    <tr *ngFor="let item of tipologia.detalle">
+                      <td>{{item.name}}</td>
+                      <td>{{item.supCubierta}} <span>m²</span></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -65,7 +63,18 @@
           <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
             <div class="row">
               <div class="col-12 col-md-12 col-sm-12">
-                 //TODO: fotos
+
+                <ng-template ngFor let-img let-i="index" [ngForOf]="imgTemp" >
+                  <div class="img-content__card animate__animated animate__fadeInDown">
+                    <div class="text-center img-content__card-file mt-1 mb-3">
+                      <img [src]="img.url" class="rounded img-content__card-file--img" alt="...">
+                    </div>
+                  </div>
+                </ng-template>
+
+                <app-empty-state *ngIf="!tipologia.fotos" [title]="'Fotos'"
+                      [description]="'No hay fotos cargadas'">
+                </app-empty-state>
               </div>
             </div>
           </div>
@@ -74,7 +83,9 @@
           <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
             <div class="row">
               <div class="col-12 col-md-12 col-sm-12">
-                //TODO: planos
+                <app-empty-state *ngIf="!tipologia.planos" [title]="'Planos'"
+                            [description]="'No hay planos cargadas'">
+                </app-empty-state>
               </div>
             </div>
           </div>
@@ -82,6 +93,10 @@
           <!-- DESCRIPCION -->
           <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
             <p [innerHtml]="tipologia.descripcion"></p>
+
+            <app-empty-state *ngIf="!tipologia.descripcion" [title]="'Notas'"
+                            [description]="'No hay notas cargadas'">
+            </app-empty-state>
           </div>
         </div>
         

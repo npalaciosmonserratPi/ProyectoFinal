@@ -38,30 +38,43 @@
           <p><strong>Cantidad máxima de habitaciones:</strong> {{ item.cantMaxHabitaciones }}</p>
         </div>
         <div class="col-1 card_tipologia__actions">
-          <div placement="top" [ngbTooltip]="tooltipVer" tooltipClass="myClass">
-            <i class="fa fa-eye card_tipologia__actions--icon" (click)="consult(item.id)"></i>
+          <div class="btn-group">
+            <i class="fa fa-ellipsis-h fa-actions" aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false"></i>
+            <!-- <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Action
+            </button> -->
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="consult(item.id)"><i class="fa fa-eye card_tipologia__actions--icon me-2"></i>Consultar</a></li>
+              <li><a class="dropdown-item" (click)="edit(item.id)"><i class="fa fa-pencil card_tipologia__actions--icon me-2" ></i>Editar</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="annul(item.id)" *ngIf="item.activo">Suspender</a></li>
+              <li><a class="dropdown-item" (click)="habilitar(item.id)" *ngIf="!item.activo">Habilitar</a></li>
+            </ul>
+          </div>
 
+          <!-- <div placement="top" [ngbTooltip]="tooltipVer" tooltipClass="myClass">
+            <i class="fa fa-eye card_tipologia__actions--icon" (click)="consult(item.id)"></i>
           </div>
           <div placement="top" [ngbTooltip]="tooltipEditar" tooltipClass="myClass">
             <i class="fa fa-pencil card_tipologia__actions--icon" (click)="edit(item.id)" ></i>
           </div>
           <div placement="top" [ngbTooltip]="tooltipSuspender" tooltipClass="myClass">
-            <i class="fa fa-ban card_tipologia__actions--icon" style="color: red;" (click)="annul(item.id)"></i>
-
+            <i class="fa fa-check-square card_tipologia__actions--icon" style="color: red;" (click)="annul(item.id)"></i>
           </div>
-          
+
+          <div placement="top" [ngbTooltip]="tooltipSuspender" tooltipClass="myClass">
+            <i class="fa fa-ban card_tipologia__actions--icon" style="color: red;" (click)="annul(item.id)"></i>
+          </div> -->
         </div>
       </div>
     </ng-template>
     
   </div>
-  <div class="mt-3">
+  <div class="mt-3 ms-2">
     <app-empty-state *ngIf="tipologyList.length == 0" [title]="'No existen tipologias cargadas'"
       [description]="'Presione en Agregar para crear una nueva tipologia'">
     </app-empty-state>
   </div>
-  
-  
 </div>
 
 

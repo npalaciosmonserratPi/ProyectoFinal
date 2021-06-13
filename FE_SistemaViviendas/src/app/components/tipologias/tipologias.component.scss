@@ -31,7 +31,7 @@
     justify-content: space-around;
 
     &--icon {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     &--icon:hover {
@@ -52,4 +52,8 @@
 .myClass .arrow::before {
   background-color: #ffe168;
   color: black;
+}
+
+.fa-actions {
+  font-size: 2rem;
 }
