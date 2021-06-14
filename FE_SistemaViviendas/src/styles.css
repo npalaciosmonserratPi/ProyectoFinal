@@ -29,7 +29,7 @@
 }
 
 .state-active {
-  background-color: green;
+  background-color: #4bb950;
 }
 
 *.swal2-styled.swal2-confirm {

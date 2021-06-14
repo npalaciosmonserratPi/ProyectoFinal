@@ -9,66 +9,66 @@
     
   </div> -->
   <div class="col-12 col-md-12 d-flex justify-content-end">
-    <button type="button" class="btn btn-warning d-flex" (click)="add()"><i class="fa fa-plus-circle content__add-icon" aria-hidden="true"></i>
+    <button type="button" class="btn btn-warning d-flex" (click)="add()"><i class="fa fa-plus-circle content__add-icon"
+        aria-hidden="true"></i>
       Agregar
     </button>
   </div>
-  
+
   <div class="col-12 col-12 mt-3 scroll" tooltipClass="myClass" *ngIf="tipologyList.length != 0">
     <ng-template ngFor let-item [ngForOf]="tipologyList">
-    
-      <div class="card_tipologia mt-2" placement="left" [ngbTooltip]="!item.activo ? tooltipSuspend : tooltipActive" >
+
+      <div class="card_tipologia mt-2" placement="left" [ngbTooltip]="!item.activo ? tooltipSuspend : tooltipActive">
         <div class="state" [ngClass]="{'state-suspend ': !item.activo,
                                         'state-active': item.activo}">
         </div>
-        <ng-template [ngIf]="item.fotos">
-          <ng-template ngFor let-img [ngForOf]="item.fotos">
-            <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__img" [src]="img.url" alt="">
-          </ng-template>  
-        </ng-template>
-        <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__img" src="../../../assets/no-image.png" alt="">
-        <div class="col-4">
-          <p> <strong> Nombre:</strong> {{ item.nombre }}</p>
-          <p> <strong> Superficie lote: </strong> {{ item.supLote }} m²</p>
-          <p *ngIf="item.supCochera"><strong>Superficie cubierta:</strong> {{ item.supCochera }} m²</p>
+
+        <div class="card_tipologia__wrapper">
+          <ng-template [ngIf]="item.fotos">
+            <ng-template ngFor let-img [ngForOf]="item.fotos">
+              <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__wrapper--img" [src]="img.url" alt="">
+            </ng-template>
+          </ng-template>
+
+          <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__wrapper--img"
+            src="../../../assets/no-image.png" alt="">
+
         </div>
         <div class="col-4">
-          <p *ngIf="item.costom2SemiCubierto"><strong>Costo por m2 semicubierto:</strong> {{ item.costom2SemiCubierto }}</p>
-          <p><strong>Costo por m2 cubierto:</strong> {{ item.costom2Cubierto }}</p>
-          <p><strong>Cantidad máxima de habitaciones:</strong> {{ item.cantMaxHabitaciones }}</p>
+          <div class="col-12 mt-1">
+            <h4> <strong> {{ item.nombre }}</strong> </h4>
+          </div>
+          <p> Superficie lote: {{ item.supLote }} m²</p>
+          <p>Costo por m² cubierto: $ {{ item.costom2Cubierto | number:'3.2-2'}}</p>
+          <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones }}</p>
+
+        </div>
+        <div class="col-4">
+          <p *ngIf="item.supCochera">Superficie semi-cubierta: {{ item.supCochera }} m²</p>
+          <p *ngIf="item.costom2SemiCubierto">Costo por m² semi-cubierto: $ {{ item.costom2SemiCubierto | number:'3.2-2'
+            }}</p>
+
         </div>
         <div class="col-1 card_tipologia__actions">
           <div class="btn-group">
-            <i class="fa fa-ellipsis-h fa-actions" aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false"></i>
-            <!-- <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Action
-            </button> -->
+            <i class="fa fa-ellipsis-h fa-actions" aria-hidden="true" data-bs-toggle="dropdown"
+              aria-expanded="false"></i>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="consult(item.id)"><i class="fa fa-eye card_tipologia__actions--icon me-2"></i>Consultar</a></li>
-              <li><a class="dropdown-item" (click)="edit(item.id)"><i class="fa fa-pencil card_tipologia__actions--icon me-2" ></i>Editar</a></li>
-              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="consult(item.id)"><i
+                    class="fa fa-eye card_tipologia__actions--icon me-2"></i>Consultar</a></li>
+              <li><a class="dropdown-item" (click)="edit(item.id)"><i
+                    class="fa fa-pencil card_tipologia__actions--icon me-2"></i>Editar</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" (click)="annul(item.id)" *ngIf="item.activo">Suspender</a></li>
               <li><a class="dropdown-item" (click)="habilitar(item.id)" *ngIf="!item.activo">Habilitar</a></li>
             </ul>
           </div>
-
-          <!-- <div placement="top" [ngbTooltip]="tooltipVer" tooltipClass="myClass">
-            <i class="fa fa-eye card_tipologia__actions--icon" (click)="consult(item.id)"></i>
-          </div>
-          <div placement="top" [ngbTooltip]="tooltipEditar" tooltipClass="myClass">
-            <i class="fa fa-pencil card_tipologia__actions--icon" (click)="edit(item.id)" ></i>
-          </div>
-          <div placement="top" [ngbTooltip]="tooltipSuspender" tooltipClass="myClass">
-            <i class="fa fa-check-square card_tipologia__actions--icon" style="color: red;" (click)="annul(item.id)"></i>
-          </div>
-
-          <div placement="top" [ngbTooltip]="tooltipSuspender" tooltipClass="myClass">
-            <i class="fa fa-ban card_tipologia__actions--icon" style="color: red;" (click)="annul(item.id)"></i>
-          </div> -->
         </div>
       </div>
     </ng-template>
-    
+
   </div>
   <div class="mt-3 ms-2">
     <app-empty-state *ngIf="tipologyList.length == 0" [title]="'No existen tipologias cargadas'"

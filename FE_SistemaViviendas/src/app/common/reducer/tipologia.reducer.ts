@@ -6,6 +6,17 @@ import { TipologiaModel } from '../../components/tipologias/models/tipologia.mod
 // }
 const initState: TipologiaModel[] = [];
 
+const tipologia = new TipologiaModel({
+    nombre: 'Compacta',
+    supLote: '147',
+    supCochera: '12',
+    costom2SemiCubierto: '10000',
+    costom2Cubierto: '30000',
+    plantaAlta: false,
+    cantMaxHabitaciones: '1'
+});
+
+initState.push(tipologia)  
 
 export function tipologiaReducer( state = initState, action: fromTipologia.acciones): TipologiaModel[] {
 
@@ -17,19 +28,18 @@ export function tipologiaReducer( state = initState, action: fromTipologia.accio
             return [...state, tipologia];
 
         case fromTipologia.EDITAR_TIPOLOGIA:
-        debugger
             return state.map( t => {
                 if(t.id == action.id) {
                     let edit = new TipologiaModel(action.tipologia);
 
                     return {  ...edit }
-                }
+                }   
                 else {
                     return t
                 }
-            })
+            });
 
-        case fromTipologia.ELIMINAR_TIPOLOGIA:
+        case fromTipologia.SUSPENDER_TIPOLOGIA:
             return state.map( t => {
                 if(t.id == action.id) {
                     return {...t,
@@ -39,7 +49,19 @@ export function tipologiaReducer( state = initState, action: fromTipologia.accio
                 else {
                     return t
                 }
-            })
+            });
+
+        case fromTipologia.HABILITAR_TIPOLOGIA:
+            return state.map( t => {
+                if(t.id == action.id) {
+                    return {...t,
+                            activo: true
+                        }
+                }
+                else {
+                    return t
+                }
+            });
 
         default:
             return state

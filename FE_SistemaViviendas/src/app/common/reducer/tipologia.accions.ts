@@ -5,7 +5,8 @@ import { TipologiaModel } from '../../components/tipologias/models/tipologia.mod
 
 export const AGREGAR_TIPOLOGIA ='[Tipologia] Agregar nueva tipologia';
 export const EDITAR_TIPOLOGIA = '[Tipologia] Editar tipologia';
-export const ELIMINAR_TIPOLOGIA = '[Tipologia] Eliminar tipologia';
+export const SUSPENDER_TIPOLOGIA = '[Tipologia] Suspender tipologia';
+export const HABILITAR_TIPOLOGIA = '[Tipologia] Habilitar tipologia';
 
 
 export class AgregarTipologiaAction implements Action {
@@ -20,13 +21,19 @@ export class EditarTipologiaAction implements Action {
     constructor( public id: string ,public tipologia: TipologiaModel ) {}
 }
 
-export class EliminarTipologiaAction implements Action {
-    readonly type = ELIMINAR_TIPOLOGIA;
+export class SuspenderTipologiaAction implements Action {
+    readonly type = SUSPENDER_TIPOLOGIA;
 
     constructor( public id: string ) {}
 }
 
+export class HabilitarTipologiaAction implements Action {
+    readonly type = HABILITAR_TIPOLOGIA;
+
+    constructor( public id: string ) {}
+}
 
 export type acciones = AgregarTipologiaAction |
                         EditarTipologiaAction |
-                        EliminarTipologiaAction;
+                        SuspenderTipologiaAction | 
+                        HabilitarTipologiaAction;

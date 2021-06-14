@@ -20,10 +20,15 @@
   align-items: center;
   padding-right: 1rem;
 
-  &__img {
+  &__wrapper {
     width: 11rem;
-    height: 11rem;
-    object-fit: scale-down;
+    height: 9rem;
+
+    &--img {
+      height: 100%;
+      width: 100%;
+      object-fit: scale-down;
+    }
   }
 
   &__actions {

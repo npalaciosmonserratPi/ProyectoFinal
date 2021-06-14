@@ -5,7 +5,7 @@ import { AppState } from 'src/app/app-reducer';
 import * as alert from '../../common/alert/alert';
 import { TipologiaModel } from './models/tipologia.model';
 import { TipologiasService } from './tipologias.service';
-import { EliminarTipologiaAction } from '../../common/reducer/tipologia.accions';
+import { SuspenderTipologiaAction, HabilitarTipologiaAction } from '../../common/reducer/tipologia.accions';
 
 @Component({
   selector: 'app-tipologias',
@@ -42,10 +42,9 @@ export class TipologiasComponent implements OnInit {
   }
 
   annul(id: string) {
-    alert.ConfirmAlert('Anular tipología', 'Esta seguro de anluar la tipología', 'Suspender', 'Cancelar').then(result => {
+    alert.ConfirmAlert('Suspender tipología', 'Esta seguro de suspender la tipología', 'Suspender', 'Cancelar').then(result => {
       if(result.isConfirmed) {
-        this._store.dispatch(new EliminarTipologiaAction(id));
-        console.log(this.tipologyList)
+        this._store.dispatch(new SuspenderTipologiaAction(id));
       }
     })
   }
@@ -53,7 +52,7 @@ export class TipologiasComponent implements OnInit {
   habilitar(id: string) {
     alert.ConfirmAlert('Habilitar tipología', 'Esta seguro de habilitar la tipología', 'Habilitar', 'Cancelar').then(result => {
       if(result.isConfirmed) {
-        
+        this._store.dispatch(new HabilitarTipologiaAction(id));
       }
     })
   }

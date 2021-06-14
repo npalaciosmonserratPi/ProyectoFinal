@@ -17,7 +17,7 @@ const routes: Routes = [
             {path: 'tipologias/create', component: TipologiaFormComponent, data: { title: 'Crear Tipologías' }},
             {path: 'tipologias/edit/:id', component: TipologiaFormComponent, data: { title: 'Editar Tipologías' }},
             {path: 'tipologias/consult/:id', component: TipologiaConsultComponent, data: { title: 'Tipología' }},
-            {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+            {path: '', redirectTo: 'tipologias', pathMatch: 'full'},
         ]
     }
 ];
