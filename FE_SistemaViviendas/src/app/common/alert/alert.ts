@@ -77,6 +77,26 @@ export function ErrorAlert(titulo: string, mensaje: string, txtBtn: string) {
       });
 }
 
+export function ConfirmAlert(titulo: string, mensaje: string, txtBtnConfirm: string, txtBtnCancel: string) {
+  return Swal.fire({
+      title: titulo,
+      text: mensaje,
+      icon: 'warning',
+      showConfirmButton: true,
+      confirmButtonText: txtBtnConfirm,
+      confirmButtonColor: '#ffc107',
+      showCancelButton: true,
+      cancelButtonText: txtBtnCancel,
+      reverseButtons: true,
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    });
+}
+
 export function WarningAlert(titulo: string, mensaje: string, txtBtn: string) {
   Swal.fire({
       title: titulo,

@@ -1,12 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: Helvetica, sans-serif;
 }
-
-/* $colors: (
-  "primary": #ffe168,
-  "secondary": blue,
-); */
 
 .rt-bg-color-primary {
   background-color: #ffe168;
@@ -14,4 +9,51 @@
 
 .rt-color-primary {
   color: #ffe168;
+}
+
+.body-section {
+  height: 73vh;
+}
+
+*.swal2-styled.swal2-confirm {
+  color: black;
+}
+
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffe168;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+*::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.452);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: #ffe168 !important;
+  box-shadow: none !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 225, 104, 0.2) !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

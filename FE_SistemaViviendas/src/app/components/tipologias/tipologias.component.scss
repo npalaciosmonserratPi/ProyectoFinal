@@ -1,0 +1,37 @@
+.content {
+  padding: 1.5rem 2rem;
+
+  &__add-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.scroll {
+  overflow-y: auto;
+  height: 64.5vh;
+}
+
+.card_tipologia {
+  height: 10rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+
+  &__img {
+    width: 11rem;
+    height: 11rem;
+    object-fit: scale-down;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-around;
+
+    &--hover:hover {
+      cursor: pointer;
+    }
+  }
+}
