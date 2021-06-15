@@ -6,6 +6,7 @@ import * as alert from '../../common/alert/alert';
 import { TipologiaModel } from './models/tipologia.model';
 import { TipologiasService } from './tipologias.service';
 import { SuspenderTipologiaAction, HabilitarTipologiaAction } from '../../common/reducer/tipologia.accions';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tipologias',
@@ -57,8 +58,9 @@ export class TipologiasComponent implements OnInit {
     })
   }
 
-  consult(id: string) {
-    this._router.navigate(['./consult', id], {relativeTo: this._activatedRoute})
+  consult(tipologia: TipologiaModel) {
+    this._router.navigate(['./consult', tipologia.id], {relativeTo: this._activatedRoute});
+
   }
 
 }

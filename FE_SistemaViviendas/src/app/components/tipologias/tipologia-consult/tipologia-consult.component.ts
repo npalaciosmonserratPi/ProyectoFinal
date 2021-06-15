@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-reducer';
 import { TipologiaModel } from '../models/tipologia.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tipologia-consult',
@@ -28,7 +29,7 @@ export class TipologiaConsultComponent implements OnInit {
     if(this.id) {
       this._store.select('tipologias').subscribe(resp => {
         this.tipologia = resp.find(x => x.id == this.id);
-        console.log("Tipologia",this.tipologia.detalle);
+        //console.log("Tipologia",this.tipologia.detalle);
       });
     }
   }

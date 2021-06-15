@@ -18,43 +18,53 @@
   <div class="col-12 col-12 mt-3 scroll" tooltipClass="myClass" *ngIf="tipologyList.length != 0">
     <ng-template ngFor let-item [ngForOf]="tipologyList">
 
-      <div class="card_tipologia mt-2" placement="left" [ngbTooltip]="!item.activo ? tooltipSuspend : tooltipActive">
+      <div class="card_tipologia" placement="left" [ngbTooltip]="!item.activo ? tooltipSuspend : tooltipActive">
         <div class="state" [ngClass]="{'state-suspend ': !item.activo,
                                         'state-active': item.activo}">
         </div>
 
-        <div class="card_tipologia__wrapper">
-          <ng-template [ngIf]="item.fotos">
-            <ng-template ngFor let-img [ngForOf]="item.fotos">
-              <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__wrapper--img" [src]="img.url" alt="">
-            </ng-template>
-          </ng-template>
-
-          <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__wrapper--img"
-            src="../../../assets/no-image.png" alt="">
-
-        </div>
-        <div class="col-4">
+        <div class="card_tipologia__wrapper mt-2">
           <div class="col-12 mt-1">
-            <h4> <strong> {{ item.nombre }}</strong> </h4>
+            <h4> <strong> Vivienda {{ item.nombre }}</strong> </h4>
           </div>
-          <p> Superficie lote: {{ item.supLote }} m²</p>
-          <p>Costo por m² cubierto: $ {{ item.costom2Cubierto | number:'3.2-2'}}</p>
-          <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones }}</p>
 
-        </div>
-        <div class="col-4">
-          <p *ngIf="item.supCochera">Superficie semi-cubierta: {{ item.supCochera }} m²</p>
-          <p *ngIf="item.costom2SemiCubierto">Costo por m² semi-cubierto: $ {{ item.costom2SemiCubierto | number:'3.2-2'
-            }}</p>
+          <div class="card_tipologia__info">
+            <div class="card_tipologia__wrapperImg">
 
+
+              <ng-template [ngIf]="item.fotos">
+                <ng-template ngFor let-img [ngForOf]="item.fotos">
+                  <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__wrapperImg--img" [src]="img.url"
+                    alt="">
+                </ng-template>
+              </ng-template>
+
+              <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__wrapperImg--img"
+                src="../../../assets/no-image.png" alt="">
+
+            </div>
+            <div>
+              <p> Superficie lote: {{ item.supLote }} m²</p>
+              <p>Costo por m² cubierto: $ {{ item.costom2Cubierto | number:'3.2-2'}}</p>
+              <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones }}</p>
+
+            </div>
+            <div>
+              <p *ngIf="item.supCochera">Superficie semi-cubierta: {{ item.supCochera }} m²</p>
+              <p *ngIf="item.costom2SemiCubierto">Costo por m² semi-cubierto: $ {{ item.costom2SemiCubierto |
+                number:'3.2-2'
+                }}</p>
+
+            </div>
+          </div>
         </div>
+
         <div class="col-1 card_tipologia__actions">
           <div class="btn-group">
             <i class="fa fa-ellipsis-h fa-actions" aria-hidden="true" data-bs-toggle="dropdown"
               aria-expanded="false"></i>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="consult(item.id)"><i
+              <li><a class="dropdown-item" (click)="consult(item)"><i
                     class="fa fa-eye card_tipologia__actions--icon me-2"></i>Consultar</a></li>
               <li><a class="dropdown-item" (click)="edit(item.id)"><i
                     class="fa fa-pencil card_tipologia__actions--icon me-2"></i>Editar</a></li>
