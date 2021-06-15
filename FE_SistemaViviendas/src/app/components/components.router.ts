@@ -12,7 +12,7 @@ const routes: Routes = [
         component: PagesComponent,
         canActivate: [AuthGuardService],
         children: [
-            {path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' }},
+            //{path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' }},
             {path: 'tipologias', component: TipologiasComponent, data: { title: 'Tipologías' }},
             {path: 'tipologias/create', component: TipologiaFormComponent, data: { title: 'Crear Tipologías' }},
             {path: 'tipologias/edit/:id', component: TipologiaFormComponent, data: { title: 'Editar Tipologías' }},

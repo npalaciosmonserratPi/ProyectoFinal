@@ -1,5 +1,5 @@
 import * as fromTipologia from './tipologia.accions';
-import { TipologiaModel } from '../../components/tipologias/models/tipologia.model';
+import { TipologiaModel, SupCubiertaModel } from '../../components/tipologias/models/tipologia.model';
 
 // export interface State {
 //     tipologias: TipologiaModel[]
@@ -13,8 +13,15 @@ const tipologia = new TipologiaModel({
     costom2SemiCubierto: '10000',
     costom2Cubierto: '30000',
     plantaAlta: false,
-    cantMaxHabitaciones: '1'
+    cantMaxHabitaciones: '0',
+    detalle: new Array<SupCubiertaModel>()
 });
+
+const monoambiente = new SupCubiertaModel();
+monoambiente.name = 'Monoambiente';
+monoambiente.supCubierta = '30'
+
+tipologia.detalle.push(monoambiente);
 
 initState.push(tipologia)  
 

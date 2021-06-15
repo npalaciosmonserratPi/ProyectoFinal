@@ -46,7 +46,8 @@
               <div class="col-6 col-md-6 col-sm-12">
                 <p> Superficie lote: {{ item.supLote }} m²</p>
                 <p>Costo por m² cubierto: $ {{ item.costom2Cubierto | number:'3.2-2'}}</p>
-                <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones }}</p>
+                <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones == 0 ? 'Monoambiente' :
+                  item.cantMaxHabitaciones}}</p>
               </div>
               <div class="col-6 col-md-6 col-sm-12">
                 <p *ngIf="item.supCochera">Superficie semi-cubierta: {{ item.supCochera }} m²</p>

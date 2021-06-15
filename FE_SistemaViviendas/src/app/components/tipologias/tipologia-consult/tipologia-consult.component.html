@@ -52,7 +52,7 @@
               </p>
               <p>
                 <strong>Cantidad máxima de habitaciones:</strong>
-                {{ tipologia.cantMaxHabitaciones }}
+                {{ tipologia.cantMaxHabitaciones == 0 ? 'Monoambiente' : tipologia.cantMaxHabitaciones }}
               </p>
             </div>
             <hr />

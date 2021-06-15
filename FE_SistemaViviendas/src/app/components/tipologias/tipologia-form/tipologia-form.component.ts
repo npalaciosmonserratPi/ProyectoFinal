@@ -70,7 +70,7 @@ export class TipologiaFormComponent implements OnInit {
   select() {
     this.tipologia.detalle = new Array<SupCubiertaModel>();
 
-    for (let i = 0; i < this.tipologia.cantMaxHabitaciones; i++) {
+    for (let i = 0; i <= this.tipologia.cantMaxHabitaciones; i++) {
       
       let detalle = new SupCubiertaModel()
       detalle.name = this.getLabel(i); 
