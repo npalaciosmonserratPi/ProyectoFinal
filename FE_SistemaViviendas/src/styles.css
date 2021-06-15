@@ -15,6 +15,23 @@
   height: 73vh;
 }
 
+.state {
+  height: 100%;
+  width: 0.8rem;
+}
+
+.state:hover {
+  cursor: pointer;
+}
+
+.state-suspend {
+  background-color: gray;
+}
+
+.state-active {
+  background-color: #4bb950;
+}
+
 *.swal2-styled.swal2-confirm {
   color: black;
 }

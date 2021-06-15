@@ -1,3 +1,4 @@
+import { PixelSpinnerModule } from 'angular-epic-spinners';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,12 +8,12 @@ import { UploadImageComponent } from './upload-file/upload-image/upload-image.co
 @NgModule({
   imports: [
     CommonModule,
-    
+    PixelSpinnerModule
   ],
   declarations: [
     UploadImageComponent,
     SpinnerComponent,
-    EmptyStateComponent
+    EmptyStateComponent  
   ],
   exports: [
     UploadImageComponent, 

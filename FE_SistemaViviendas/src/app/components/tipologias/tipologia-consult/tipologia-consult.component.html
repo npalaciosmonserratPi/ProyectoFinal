@@ -1,97 +1,144 @@
-
 <div class="row">
   <div class="body-section">
-      <div class="col-6 col-md-6"> 
-        <h5>Nombre tipología</h5>
-      </div>
-      <div class="col-12 col-md-12">
+    <div class="col-6 col-md-6">
+      <h3> <strong> Vivienda {{tipologia.nombre}} </strong></h3>
+    </div>
+    <div class="col-12 col-md-12 mt-4">
+      <!-- NAV TABS -->
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button"
+            role="tab" aria-controls="details" aria-selected="true">
+            Detalle
+          </button>
+          <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" role="tab"
+            aria-controls="photo" aria-selected="false">
+            Fotos
+          </button>
+          <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button"
+            role="tab" aria-controls="drawing" aria-selected="false">
+            Planos
+          </button>
+          <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" role="tab"
+            aria-controls="note" aria-selected="false">
+            Nota
+          </button>
+        </div>
+      </nav>
 
-        <!-- NAV TABS -->
-        <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" 
-                    role="tab" aria-controls="details" aria-selected="true">Detalle
-            </button> 
-            <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" 
-                    role="tab" aria-controls="photo" aria-selected="false">Fotos
-            </button>
-            <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button" 
-                    role="tab" aria-controls="drawing" aria-selected="false">Planos
-            </button>
-            <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" 
-                    role="tab" aria-controls="note" aria-selected="false">Nota
-            </button>
-          </div>
-        </nav>
-
-        <!-- TABS -->
-        <div class="tab-content mt-3" id="nav-tabContent">
-
-          <!-- GENERALES -->
-          <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-            <div class="row">
-              <div class="col-12 col-md-12">
-                <p>Superficie de Lote</p>
-                <p>Superficie de cochera</p>
-                <p>Precio m² superficie cubierta</p>
-                <p>Precio m² superfice semi-cubierta</p>
-                <p>Permite ampliacion planta alta</p>
-                <p>Cantidad máxima de habitaciones</p>
-              </div>
-              
-              <div class="col-6 col-md-6">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">Cantidad habitaciones</th>
-                      <th scope="col">m² cubierto</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Monoambiente</td>
-                      <td>30 <span>m²</span></td>
-                    </tr>
-                    <tr>
-                      <td>1 habitación</td>
-                      <td>40 <span>m²</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+      <!-- TABS -->
+      <div class="tab-content mt-3" id="nav-tabContent">
+        <!-- GENERALES -->
+        <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+          <div class="row">
+            <div class="col-12 col-md-12">
+              <p><strong>Superficie de Lote:</strong> {{ tipologia.supLote }} m²</p>
+              <p>
+                <strong>Precio m² superficie cubierta:</strong>
+                $ {{ tipologia.costom2Cubierto | number:'3.2-2' }}
+              </p>
+              <p>
+                <strong>Superficie de cochera:</strong>
+                {{ tipologia.supCochera || "-" }} {{ tipologia.supCochera ? 'm²' : ''}}
+              </p>
+              <p>
+                <strong>Precio m² superfice semi-cubierta:</strong>
+                {{tipologia.costom2SemiCubierto ? '$' : '-'}} {{ tipologia.costom2SemiCubierto | number:'3.2-2' || "-"
+                }}
+              </p>
+              <p>
+                <strong>Permite ampliacion planta alta:</strong>
+                {{ tipologia.plantaAlta ? "Si" : "No" }}
+              </p>
+              <p>
+                <strong>Cantidad máxima de habitaciones:</strong>
+                {{ tipologia.cantMaxHabitaciones == 0 ? 'Monoambiente' : tipologia.cantMaxHabitaciones }}
+              </p>
             </div>
-          </div>
-        
-          <!-- FOTO -->
-          <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
-            <div class="row">
-              <div class="col-12 col-md-12 col-sm-12">
-                 //TODO: tengo que continuar
-              </div>
+            <hr />
+            <h5>Detalle de viviendas</h5>
+            <div class="col-6 col-md-6">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Cantidad habitaciones</th>
+                    <th scope="col">m² cubierto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of tipologia.detalle">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.supCubierta }} <span>m²</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-
-          <!-- PLANOS -->
-          <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
-            <div class="row">
-              <div class="col-12 col-md-12 col-sm-12">
-                
-              </div>
-            </div>
-          </div>
-          
-          <!-- DESCRIPCION -->
-          <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
-            
           </div>
         </div>
-        
-      </div>
 
+        <!-- FOTO -->
+        <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
+          <div class="row">
+            <ng-template [ngIf]="tipologia.fotos">
+              <div class="col-12 col-md-12 col-sm-12 img-content">
+                <ng-template ngFor let-img let-i="index" [ngForOf]="tipologia.fotos">
+                  <div class="
+                      img-content__card
+                      animate__animated animate__fadeInDown
+                    ">
+                    <div class="text-center img-content__card-file mt-1 mb-3">
+                      <img [src]="img.url" class="rounded img-content__card-file--img" alt="..." />
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </ng-template>
+
+            <app-empty-state *ngIf="!tipologia.fotos" [title]="'Fotos'" [description]="'No hay fotos cargadas'">
+            </app-empty-state>
+          </div>
+        </div>
+
+        <!-- PLANOS -->
+        <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
+          <div class="row">
+            <div class="col-12 col-md-12 col-sm-12">
+              <ng-template [ngIf]="tipologia.planos">
+                <div class="col-12 col-md-12 col-sm-12 img-content">
+                  <ng-template ngFor let-img let-i="index" [ngForOf]="tipologia.planos">
+                    <div class="
+                      img-content__card
+                      animate__animated animate__fadeInDown
+                    ">
+                      <div class="text-center img-content__card-file mt-1 mb-3">
+                        <img [src]="img.url" class="rounded img-content__card-file--img" alt="..." />
+                      </div>
+                    </div>
+                  </ng-template>
+                </div>
+              </ng-template>
+            </div>
+
+            <app-empty-state *ngIf="!tipologia.planos" [title]="'Planos'" [description]="'No hay planos cargadas'">
+            </app-empty-state>
+          </div>
+        </div>
+
+        <!-- DESCRIPCION -->
+        <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
+          <p [innerHtml]="tipologia.descripcion"></p>
+
+          <app-empty-state *ngIf="!tipologia.descripcion" [title]="'Notas'" [description]="'No hay notas cargadas'">
+          </app-empty-state>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="card-footer bg-transparent">
     <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
-      <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Volver</button>
+      <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">
+        Volver
+      </button>
     </div>
-  </div> 
+  </div>
 </div>

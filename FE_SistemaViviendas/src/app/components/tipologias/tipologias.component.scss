@@ -13,25 +13,67 @@
 }
 
 .card_tipologia {
-  height: 10rem;
+  height: 12rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1rem;
+  margin-bottom: 1.5rem;
 
-  &__img {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__wrapperImg {
     width: 11rem;
-    height: 11rem;
-    object-fit: scale-down;
+    height: 8rem;
+
+    &--img {
+      height: 77%;
+      width: 100%;
+      object-fit: scale-down;
+    }
+  }
+
+  &__details {
+    display: flex;
+    width: 100%;
   }
 
   &__actions {
     display: flex;
     justify-content: space-around;
+    align-self: center;
+    &--icon {
+      font-size: 1rem;
+    }
 
-    &--hover:hover {
+    &--icon:hover {
       cursor: pointer;
     }
   }
+}
+
+.card_tipologia:hover {
+  cursor: pointer;
+}
+
+.myClass .tooltip-inner {
+  background-color: #ffe168;
+  color: black;
+}
+
+.myClass .arrow::before {
+  background-color: #ffe168;
+  color: black;
+}
+
+.fa-actions {
+  font-size: 2rem;
 }

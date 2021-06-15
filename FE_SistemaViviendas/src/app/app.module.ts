@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { appReducers } from './app-reducer';
 import { environment } from '../environments/environment';
+import { ComponentsModule } from './components/components.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { environment } from '../environments/environment';
     LoginComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     ComponentCommonModule,
     APP_ROUTES,
@@ -34,6 +37,7 @@ import { environment } from '../environments/environment';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

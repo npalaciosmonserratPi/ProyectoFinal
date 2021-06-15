@@ -1,21 +1,19 @@
-
 <div class="mb-3 mt-2 col-6 d-flex">
-  <input class="form-control" type="file" id="formFile" accept=".png, .jpg" 
-        (change)="selectImage($event.target.files)" multiple>
+  <input class="form-control" type="file" id="formFile" accept=".png, .jpg, .jpeg"
+    (change)="selectImage($event.target.files)" multiple>
 </div>
 
 <div class="img-content" *ngIf="imgTemp.length != 0">
-  <ng-template ngFor let-img let-i="index" [ngForOf]="imgTemp" >
+  <ng-template ngFor let-img let-i="index" [ngForOf]="imgTemp">
     <div class="img-content__card animate__animated animate__fadeInDown">
       <div class="text-center img-content__card-file mt-1 mb-3">
         <div class="img-content__card-file--iconGroup">
-          <i class="fa fa-check-circle img-content__card-file--icon me-2" 
-              (click)="setPrincipal(img)" aria-hidden="true"
-              [ngClass]="{'iconColor': img.isPricipal}" *ngIf="OnSetPrincipal">
+          <i class="fa fa-check-circle img-content__card-file--icon me-2" (click)="setPrincipal(img)" aria-hidden="true"
+            [ngClass]="{'iconColor': img.isPricipal}" *ngIf="OnSetPrincipal">
           </i>
           <i class="fa fa-times img-content__card-file--icon" (click)="delete(i)"></i>
         </div>
-       
+
         <img [src]="img.url" class="rounded img-content__card-file--img" alt="...">
       </div>
     </div>
@@ -23,8 +21,5 @@
 </div>
 
 <app-empty-state *ngIf="imgTemp.length == 0" [title]="'No se seleccionó imagenes'"
-                [description]="'Por favor, seleccione las imágenes a cargar'">
+  [description]="'Por favor, seleccione las imágenes a cargar'">
 </app-empty-state>
-
-
-

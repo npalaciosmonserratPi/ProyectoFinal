@@ -5,14 +5,12 @@ import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { ComponentsModule } from '../components/components.module';
 import { PagesComponent } from './pages.component';
 import { COMPONENTS_ROUTES } from '../components/components.router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     ComponentsModule,
     COMPONENTS_ROUTES,
-    NgbModule
   ],
   declarations: [
     PagesComponent,
