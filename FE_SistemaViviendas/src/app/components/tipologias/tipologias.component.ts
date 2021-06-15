@@ -7,6 +7,7 @@ import { TipologiaModel } from './models/tipologia.model';
 import { TipologiasService } from './tipologias.service';
 import { SuspenderTipologiaAction, HabilitarTipologiaAction } from '../../common/reducer/tipologia.accions';
 import { Title } from '@angular/platform-browser';
+import { ActivarLoadingAction, DesactivarLoadingAction } from '../../common/reducer/ui.accions';
 
 @Component({
   selector: 'app-tipologias',
@@ -45,7 +46,12 @@ export class TipologiasComponent implements OnInit {
   annul(id: string) {
     alert.ConfirmAlert('Suspender tipología', 'Esta seguro de suspender la tipología', 'Suspender', 'Cancelar').then(result => {
       if(result.isConfirmed) {
-        this._store.dispatch(new SuspenderTipologiaAction(id));
+        this._store.dispatch(new ActivarLoadingAction())
+         
+        setTimeout(() => {
+          this._store.dispatch(new SuspenderTipologiaAction(id));
+          this._store.dispatch(new DesactivarLoadingAction())
+        }, 1000);
       }
     })
   }
@@ -53,7 +59,12 @@ export class TipologiasComponent implements OnInit {
   habilitar(id: string) {
     alert.ConfirmAlert('Habilitar tipología', 'Esta seguro de habilitar la tipología', 'Habilitar', 'Cancelar').then(result => {
       if(result.isConfirmed) {
-        this._store.dispatch(new HabilitarTipologiaAction(id));
+        this._store.dispatch(new ActivarLoadingAction())
+         
+        setTimeout(() => {
+          this._store.dispatch(new HabilitarTipologiaAction(id));
+          this._store.dispatch(new DesactivarLoadingAction())
+        }, 1000);
       }
     })
   }
