@@ -10,6 +10,7 @@
   &__text {
     color: black;
     margin-right: 1rem;
+    display: flex;
   }
 
   &__chevron {
@@ -20,4 +21,18 @@
 
 .space-icon {
   margin-right: 1rem;
+}
+
+.icon-user {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.config-icon:hover,
+.dropdown-item:hover {
+  cursor: pointer;
+}
+
+.config-icon {
+  font-size: 1.3rem;
 }

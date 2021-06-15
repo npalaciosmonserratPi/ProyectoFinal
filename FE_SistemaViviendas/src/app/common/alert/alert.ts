@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 export function SuccesMessage(titulo: string) {
   const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -23,7 +23,7 @@ export function SuccesMessage(titulo: string) {
 export function ErrorMessage(titulo: string) {
   const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -66,7 +66,7 @@ export function ErrorAlert(titulo: string, mensaje: string, txtBtn: string) {
         icon: 'error',
         confirmButtonText: txtBtn,
         confirmButtonColor: '#DC1E38',
-        timer: 2000,
+        timer: 4000,
         timerProgressBar: true,
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
@@ -75,6 +75,26 @@ export function ErrorAlert(titulo: string, mensaje: string, txtBtn: string) {
           popup: 'animate__animated animate__fadeOutUp'
         }
       });
+}
+
+export function ConfirmAlert(titulo: string, mensaje: string, txtBtnConfirm: string, txtBtnCancel: string) {
+  return Swal.fire({
+      title: titulo,
+      text: mensaje,
+      icon: 'warning',
+      showConfirmButton: true,
+      confirmButtonText: txtBtnConfirm,
+      confirmButtonColor: '#ffc107',
+      showCancelButton: true,
+      cancelButtonText: txtBtnCancel,
+      reverseButtons: true,
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    });
 }
 
 export function WarningAlert(titulo: string, mensaje: string, txtBtn: string) {

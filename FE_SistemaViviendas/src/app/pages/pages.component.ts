@@ -14,14 +14,11 @@ export class PagesComponent implements OnInit {
 
   constructor(private router: Router) { 
     this.getDataReoute().subscribe(resp => {
-      console.log(resp)
       this.title = resp.title;
-    })
+    });
   }
 
   ngOnInit() {
-    
- 
   }
 
   getDataReoute(): Observable<any> {

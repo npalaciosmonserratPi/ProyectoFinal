@@ -1,0 +1,97 @@
+
+<div class="row">
+  <div class="body-section">
+      <div class="col-6 col-md-6"> 
+        <h5>Nombre tipología</h5>
+      </div>
+      <div class="col-12 col-md-12">
+
+        <!-- NAV TABS -->
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" 
+                    role="tab" aria-controls="details" aria-selected="true">Detalle
+            </button> 
+            <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" 
+                    role="tab" aria-controls="photo" aria-selected="false">Fotos
+            </button>
+            <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button" 
+                    role="tab" aria-controls="drawing" aria-selected="false">Planos
+            </button>
+            <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" 
+                    role="tab" aria-controls="note" aria-selected="false">Nota
+            </button>
+          </div>
+        </nav>
+
+        <!-- TABS -->
+        <div class="tab-content mt-3" id="nav-tabContent">
+
+          <!-- GENERALES -->
+          <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+            <div class="row">
+              <div class="col-12 col-md-12">
+                <p>Superficie de Lote</p>
+                <p>Superficie de cochera</p>
+                <p>Precio m² superficie cubierta</p>
+                <p>Precio m² superfice semi-cubierta</p>
+                <p>Permite ampliacion planta alta</p>
+                <p>Cantidad máxima de habitaciones</p>
+              </div>
+              
+              <div class="col-6 col-md-6">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Cantidad habitaciones</th>
+                      <th scope="col">m² cubierto</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Monoambiente</td>
+                      <td>30 <span>m²</span></td>
+                    </tr>
+                    <tr>
+                      <td>1 habitación</td>
+                      <td>40 <span>m²</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        
+          <!-- FOTO -->
+          <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
+            <div class="row">
+              <div class="col-12 col-md-12 col-sm-12">
+                 //TODO: tengo que continuar
+              </div>
+            </div>
+          </div>
+
+          <!-- PLANOS -->
+          <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
+            <div class="row">
+              <div class="col-12 col-md-12 col-sm-12">
+                
+              </div>
+            </div>
+          </div>
+          
+          <!-- DESCRIPCION -->
+          <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
+            
+          </div>
+        </div>
+        
+      </div>
+
+  </div>
+  <div class="card-footer bg-transparent">
+    <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
+      <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Volver</button>
+    </div>
+  </div> 
+</div>

@@ -2,15 +2,31 @@
   <div class="login__card">
     <img src="../../../assets/roofIT_Logo.png" class="login__logo" alt="">
 
-    <form class="form" autocomplete="off">
-      <label>Usuario</label>
-      <input class="form__input" type="text" name="user" [(ngModel)]="userDto.userName">
+    <form #f="ngForm" class="form" autocomplete="off">
+      
+      <label for="userName" class="form-label">Usuario</label>
+      <input class="form-control form__input" 
+            [ngClass]="{'is-invalid': (!f.controls.user?.valid && f.controls.user?.touched) || userInvalid}" 
+            (blur)="userInvalid = false"
+            id="userName" aria-describedby="userNameFeed" 
+            type="text" name="user" [(ngModel)]="userDto.userName" required>
 
-      <label class="form_label mt-5">Contraseña</label>
-      <input class="form__input" type="password" name="password" [(ngModel)]="userDto.password" (keyup.enter)="login()">
+      <div *ngIf="(!f.controls.user?.valid && f.controls.user?.touched) || userInvalid" id="userNameFeed" class="invalid-feedback">
+        Ingrese un usuario válido.
+      </div>
 
+      <label for="contraseña" class="form-label mt-3">Contraseña</label>
+      <input class="form-control form__input" [ngClass]="{'is-invalid': (!f.controls.password?.valid && f.controls.password?.touched) || passwordInvalid}" id="contraseña" aria-describedby="contraseñaFeed" 
+              (blur)="passwordInvalid = false"
+              type="password" name="password" [(ngModel)]="userDto.password" (keyup.enter)="login(f)" required>
+      
+      <div *ngIf="(!f.controls.password?.valid && f.controls.password?.touched) || passwordInvalid" id="contraseñaFeed" class="invalid-feedback">
+        Ingrese una contraseña válida
+      </div>
+    
     </form>
-    <button class="btn btn-warning" (click)="login()" [disabled]='isLoading'>Iniciar sesion</button>
+
+    <button class="btn btn-warning" (click)="login(f)" [disabled]='isLoading'>Iniciar sesion</button>
 
   </div>
 </div>

@@ -1,17 +1,19 @@
-
 <div class="page">
-  <app-sidebar></app-sidebar>
+  <div class="page__sidebar">
+    <app-sidebar ></app-sidebar>
+  </div>
+
   <div class="page__body">
     <app-navbar></app-navbar>
 
-    <div class="page__component">
-      <h2 class="page__title">{{title}}</h2>
-      <div class="page__contenido">
+    <div class="card page__contenido">
+      <h4 class="card-header">{{ title }}</h4>
+      <div class="card-body">
         <router-outlet></router-outlet>
-      </div> 
+      </div>
     </div>
   </div>
-</div>
 
+</div>
 
 
