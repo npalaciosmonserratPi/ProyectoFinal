@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
     this._authServise.login(this.userDto).subscribe((resp) => {
 
-      this._router.navigate(['/tipologias']);
+      this._router.navigate(['/dashboard']);
       alerts.SuccesMessage('Inicio de sesión correcto');
       this._store.dispatch(new DesactivarLoadingAction());
 

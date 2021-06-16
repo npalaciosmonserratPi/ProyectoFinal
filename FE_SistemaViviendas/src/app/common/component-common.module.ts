@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmptyStateComponent } from './empty-state/empty-state.component';
 import { UploadImageComponent } from './upload-file/upload-image/upload-image.component';
+import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { UploadImageComponent } from './upload-file/upload-image/upload-image.co
   declarations: [
     UploadImageComponent,
     SpinnerComponent,
-    EmptyStateComponent  
+    EmptyStateComponent,
+    ImageGalleryComponent
   ],
   exports: [
     UploadImageComponent, 
     SpinnerComponent,
-    EmptyStateComponent
+    EmptyStateComponent,
+    ImageGalleryComponent
   ]
 })
 export class ComponentCommonModule { }

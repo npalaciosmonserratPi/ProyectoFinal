@@ -80,18 +80,7 @@
         <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
           <div class="row">
             <ng-template [ngIf]="tipologia.fotos">
-              <div class="col-12 col-md-12 col-sm-12 img-content">
-                <ng-template ngFor let-img let-i="index" [ngForOf]="tipologia.fotos">
-                  <div class="
-                      img-content__card
-                      animate__animated animate__fadeInDown
-                    ">
-                    <div class="text-center img-content__card-file mt-1 mb-3">
-                      <img [src]="img.url" class="rounded img-content__card-file--img" alt="..." />
-                    </div>
-                  </div>
-                </ng-template>
-              </div>
+              <app-image-gallery [image]="tipologia.fotos"></app-image-gallery>
             </ng-template>
 
             <app-empty-state *ngIf="!tipologia.fotos" [title]="'Fotos'" [description]="'No hay fotos cargadas'">
@@ -104,18 +93,7 @@
           <div class="row">
             <div class="col-12 col-md-12 col-sm-12">
               <ng-template [ngIf]="tipologia.planos">
-                <div class="col-12 col-md-12 col-sm-12 img-content">
-                  <ng-template ngFor let-img let-i="index" [ngForOf]="tipologia.planos">
-                    <div class="
-                      img-content__card
-                      animate__animated animate__fadeInDown
-                    ">
-                      <div class="text-center img-content__card-file mt-1 mb-3">
-                        <img [src]="img.url" class="rounded img-content__card-file--img" alt="..." />
-                      </div>
-                    </div>
-                  </ng-template>
-                </div>
+                <app-image-gallery [image]="tipologia.planos"></app-image-gallery>
               </ng-template>
             </div>
 
@@ -130,6 +108,7 @@
 
           <app-empty-state *ngIf="!tipologia.descripcion" [title]="'Notas'" [description]="'No hay notas cargadas'">
           </app-empty-state>
+
         </div>
       </div>
     </div>
