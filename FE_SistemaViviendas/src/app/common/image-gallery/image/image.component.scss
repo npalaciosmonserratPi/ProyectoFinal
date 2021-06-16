@@ -1,0 +1,16 @@
+.header-class {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0px;
+}
+
+.wrapper {
+  
+  &__img {
+    width: 100%;
+  }
+}
+
+.btn:focus {
+  box-shadow: none;
+}

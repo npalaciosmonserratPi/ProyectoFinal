@@ -10,6 +10,10 @@
     align-items: center;
   }
 
+  &__card:hover {
+    cursor: pointer;
+  }
+
   &__card-file {
     width: 15rem;
     height: 15rem;
