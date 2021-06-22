@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CurrencyPipe, Location } from '@angular/common';
@@ -7,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app-reducer';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../../../common/reducer/ui.accions';
 import * as alerts from '../../../common/alert/alert';
+import { AgregarTipologiaAction, EditarTipologiaAction } from '../../../common/reducer/tipologia.accions';
 
 
 @Component({
@@ -17,7 +19,7 @@ import * as alerts from '../../../common/alert/alert';
 export class TipologiaFormComponent implements OnInit {
 
   editorStyle = { 
-    height: '400px',
+    height: '20rem',
     backgroundColor: '#ffff',
   }
 
@@ -26,13 +28,11 @@ export class TipologiaFormComponent implements OnInit {
       ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
       [{ 'header': 1 }, { 'header': 2 }],               // custom button values
       [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      //[{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
       [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-     // [{ 'direction': 'rtl' }],                         // text direction
   
       [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      
       [{ 'font': [] }],
       [{ 'align': [] }],
       ['clean'],                                         // remove formatting button
@@ -40,7 +40,7 @@ export class TipologiaFormComponent implements OnInit {
   };
 
   id: string;
-  tipologia = new TipologiaModel();
+  tipologia: TipologiaModel;
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _location: Location,
@@ -50,17 +50,27 @@ export class TipologiaFormComponent implements OnInit {
                }
 
   ngOnInit() {
-    this.tipologia.detalle = new Array<SupCubiertaModel>();
 
     this._activatedRoute.params.subscribe(params => {
       this.id = params.id;
     });
+
+    if(this.id) {
+      this._store.select('tipologias').subscribe(resp => {
+        this.tipologia = resp.find(x => x.id == this.id);
+        console.log("editar", this.tipologia)
+      })
+    }
+    else {
+      this.tipologia = new TipologiaModel();
+      this.tipologia.detalle = new Array<SupCubiertaModel>();
+    }
   }
 
   select() {
     this.tipologia.detalle = new Array<SupCubiertaModel>();
 
-    for (let i = 0; i < this.tipologia.cantMaxHabitaciones; i++) {
+    for (let i = 0; i <= this.tipologia.cantMaxHabitaciones; i++) {
       
       let detalle = new SupCubiertaModel()
       detalle.name = this.getLabel(i); 
@@ -69,6 +79,7 @@ export class TipologiaFormComponent implements OnInit {
       this.tipologia.detalle.push(detalle);
     }
   }
+
   uploadImg(e) {
     this.tipologia.fotos = e;
   }
@@ -79,16 +90,42 @@ export class TipologiaFormComponent implements OnInit {
 
   save() {
     this._store.dispatch(new ActivarLoadingAction);
-    this._tipologyService.createTipology(this.tipologia).subscribe((resp) => {
 
-      alerts.SuccesMessage('Tipología creada con éxito.');
+    if(this.id) {
+      this.edit();
+    }
+    else {
+      this.create();
+    }
+
+    // this._tipologyService.createTipology(this.tipologia).subscribe((resp) => {
+
+    //   alerts.SuccesMessage('Tipología creada con éxito.');
+    //   this._store.dispatch(new DesactivarLoadingAction);
+    //   this._location.back();
+
+    // }, error => {
+    //   alerts.ErrorMessage('Error al crear tipología');
+    //   this._store.dispatch(new DesactivarLoadingAction);
+    // })
+
+    
+  }
+
+  create() {
+    setTimeout(() => {
+      this._store.dispatch(new AgregarTipologiaAction(this.tipologia));
       this._store.dispatch(new DesactivarLoadingAction);
       this._location.back();
+    }, 2000)
+  }
 
-    }, error => {
-      alerts.ErrorMessage('Error al crear tipología');
+  edit() {
+    setTimeout(() => {
+      this._store.dispatch(new EditarTipologiaAction(this.id ,this.tipologia));
       this._store.dispatch(new DesactivarLoadingAction);
-    })
+      this._location.back();
+    }, 2000)
   }
 
   setFormat() {

@@ -18,9 +18,9 @@ export class SidebarComponent implements OnInit {
   
   addMenuItems() {
     this.menuItem = [
-      new MenuItemModel('Dashboard', 'fa fa-tachometer', './dashboard', []),
-      new MenuItemModel('Tipologias', 'fa fa-home', './tipologias', []),
-      new MenuItemModel('Convenios', 'fa fa-handshake-o', './agreement', [])
+      new MenuItemModel('Dashboard', 'speed', './dashboard', []),
+      new MenuItemModel('Tipologias', 'home', './tipologias', []),
+      new MenuItemModel('Convenios', 'work', './agreement', [])
     ]
   }
 

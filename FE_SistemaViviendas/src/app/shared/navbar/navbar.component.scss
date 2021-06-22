@@ -5,12 +5,13 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 3rem;
+  padding-right: 1.5rem;
 
   &__text {
     color: black;
     margin-right: 1rem;
     display: flex;
+    align-items: center;
   }
 
   &__chevron {
@@ -28,11 +29,17 @@
   font-size: 1.5rem;
 }
 
+.dropdown-item{
+  display: flex;
+  align-items: center;
+}
+
 .config-icon:hover,
 .dropdown-item:hover {
   cursor: pointer;
 }
 
-.config-icon {
-  font-size: 1.3rem;
+.userName {
+  text-transform: capitalize;
+  margin-bottom: 0;
 }

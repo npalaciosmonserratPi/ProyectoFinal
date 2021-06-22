@@ -3,6 +3,7 @@
   font-family: Helvetica, sans-serif;
 }
 
+/*CSS Generales de color*/
 .rt-bg-color-primary {
   background-color: #ffe168;
 }
@@ -12,13 +13,28 @@
 }
 
 .body-section {
-  height: 73vh;
+  height: 94%;
 }
 
-*.swal2-styled.swal2-confirm {
-  color: black;
+/** CSS State */
+.state {
+  height: 100%;
+  width: 0.8rem;
 }
 
+.state:hover {
+  cursor: pointer;
+}
+
+.state-suspend {
+  background-color: gray;
+}
+
+.state-active {
+  background-color: #4bb950;
+}
+
+/**CSS Scroll*/
 *::-webkit-scrollbar {
   -webkit-appearance: none;
 }
@@ -33,6 +49,7 @@
   width: 10px;
 }
 
+/*CSS Spinner*/
 .spinner {
   display: flex;
   justify-content: center;
@@ -44,16 +61,25 @@
   background-color: rgba(255, 255, 255, 0.452);
 }
 
-.form-control:focus,
-.form-select:focus,
-.form-check-input:focus {
-  border-color: #ffe168 !important;
-  box-shadow: none !important;
-  box-shadow: 0 0 0 0.25rem rgba(255, 225, 104, 0.2) !important;
+/*CSS Tooltip*/
+.my-custom-class .tooltip-inner {
+  background-color: #ffc107;
+  color: black;
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.my-custom-class .arrow::before {
+  background-color: #ffc107;
+  color: black;
 }
+
+/**Input type number*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

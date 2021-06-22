@@ -42,7 +42,10 @@ export class UploadImageComponent implements OnInit {
         image.isPricipal = false;
 
         this.imgTemp.push(image);
-        this.imgTemp[0].isPricipal = true;
+
+        if(this.OnSetPrincipal) {
+          this.imgTemp[0].isPricipal = true;
+        }
 
         this.listImg.emit(this.imgTemp);
 
@@ -62,7 +65,7 @@ export class UploadImageComponent implements OnInit {
 
   delete(i) {
     this.imgTemp.splice(i, 1);
-    if(!this.imgTemp.some( x => x.isPricipal) && this.imgTemp.length > 0) {
+    if( this.OnSetPrincipal && (!this.imgTemp.some( x => x.isPricipal) && this.imgTemp.length > 0)) {
       this.imgTemp[0].isPricipal = true;
     }
     this.listImg.emit(this.imgTemp);

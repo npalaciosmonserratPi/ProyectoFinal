@@ -1,162 +1,103 @@
-<div class="row">
+<div class="row tipology">
   <form #form="ngForm" (submit)="save()">
-    
-      <div class="body-section">
-          <div class="col-6 col-md-6"> 
-            <div class="mb-3">
-              <label class="form-label">Nombre tipología</label>
-              <input type="text" class="form-control" name="name" [(ngModel)]="tipologia.nombre" required>
-            </div>
-          </div>
 
-          <div class="col-12 col-md-12">
+    <div class="body-section">
 
-            <!-- NAV TABS -->
-            <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" 
-                        role="tab" aria-controls="details" aria-selected="true">Detalle
-                </button> 
-                <button class="nav-link" id="photo-tab" data-bs-toggle="tab" data-bs-target="#photo" type="button" 
-                        role="tab" aria-controls="photo" aria-selected="false">Fotos
-                </button>
-                <button class="nav-link" id="drawing-tab" data-bs-toggle="tab" data-bs-target="#drawing" type="button" 
-                        role="tab" aria-controls="drawing" aria-selected="false">Planos
-                </button>
-                <button class="nav-link" id="note-tab" data-bs-toggle="tab" data-bs-target="#note" type="button" 
-                        role="tab" aria-controls="note" aria-selected="false">Nota
-                </button>
-              </div>
-            </nav>
-
-            <!-- TABS -->
-            <div class="tab-content mt-3" id="nav-tabContent">
-
-              <!-- GENERALES -->
-              <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
-                <div class="row">
-
-                  <!-- Columna 1 -->
-                  <div class="col-12 col-md-12 col-sm-12 d-flex flex-wrap justify-content-between align-items-center">
-      
-                    <div class="me-2">
-                      <label  class="form-label">Superficie de lote</label>
-                      <div class="input-group input-sup">
-                        <input type="text" class="form-control" name="supLote" [(ngModel)]="tipologia.supLote" required>
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">m²</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="me-2">
-                      <label class="form-label">Superficie cochera</label> 
-                      <div class="input-group input-sup">
-                        <input type="text" class="form-control" name="supCochera" [(ngModel)]="tipologia.supCochera">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">m²</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="me-2">
-                      <label class="form-label">Costo total m² semi-cubierto</label> 
-                      <div class="input-group input-sup">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">$</span>
-                        </div>
-                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2SemiCubierto">
-                      </div>
-                    </div>
-
-                    <div class="me-2">
-                      <label class="form-label">Costo total m² cubierto</label> 
-                      <div class="input-group input-sup">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1">$</span>
-                        </div>
-                        <input type="text" class="form-control" name="costo" [(ngModel)]="tipologia.costom2Cubierto" required>
-                      </div>
-                    </div>
-
-                    <div class="form-check form-switch me-2">
-                      <label class="form-check-label" for="flexSwitchCheckChecked">Permite ampliación planta alta</label>
-                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="ampliacion" checked [(ngModel)]="tipologia.plantaAlta">
-                    </div>
-                    
-                  </div> 
-
-                  <!-- Columna 2 -->
-                  <div class="col-12 col-md-12 col-sm-12 mt-4 d-flex">
-
-                    <div class="col-5 col-md-5">
-                      <label class="form-label">Cantidad máxima de habitaciones</label>
-                      <select class="form-select" name="habitaciones" (change)="select()" [(ngModel)]="tipologia.cantMaxHabitaciones" required>
-                        <option value=1>Monoamiente</option>
-                        <option value=2>1</option>
-                        <option value=3>2</option> 
-                        <option value=4>3</option>
-                      </select>
-                    </div>
-                    <div class="col-7 col-md-7" *ngIf="tipologia.detalle.length != 0">
-                        <h5>Superficie cubierta</h5>
-                        <div class=" d-flex mt-6 flex-wrap scroll">
-      
-                          <ng-template ngFor let-i="index" let-item [ngForOf]="tipologia.detalle">
-                            <div class="details-vivienda animate__animated animate__pulse">
-                              <label>{{item.name}}</label>
-                              <div class="input-group mb-3">
-                                <input type="number" class="form-control" name="sup" [(ngModel)]="item.supCubierta" required>
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="basic-addon1">m²</span>
-                                </div>
-                              </div>
-                            </div>
-                          </ng-template>
-                        </div>
-                    </div>
-                    <div class="col-7 col-md-7 pt-5" *ngIf="tipologia.detalle.length == 0">
-                      <app-empty-state  [title]="'Cantidad de habitaciones'" [description]="'Por favor, seleccione cantidad máxima de habitaciones'"></app-empty-state>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
-              <!-- FOTO -->
-              <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab">
-                <div class="row">
-                  <div class="col-12 col-md-12 col-sm-12">
-                    <app-upload-image (listImg)="uploadImg($event)" [OnSetPrincipal]="true"></app-upload-image>   
-                  </div>
-                </div>
-              </div>
-
-              <!-- PLANOS -->
-              <div class="tab-pane fade" id="drawing" role="tabpanel" aria-labelledby="drawing-tab">
-                <div class="row">
-                  <div class="col-12 col-md-12 col-sm-12">
-                    <app-upload-image (listImg)="uploadPlano($event)"></app-upload-image>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- DESCRIPCION -->
-              <div class="tab-pane fade" id="note" role="tabpanel" aria-labelledby="note-tab">
-                <div class="mb-3">
-                  <quill-editor  [styles]="editorStyle" [modules]="config" name="editor" [(ngModel)]="tipologia.descripcion"></quill-editor>
-                </div>
-              </div>
-            </div>
-          
-          </div>
-
+      <div class="col-12 col-md-12">
+        <mat-form-field class="control">
+          <mat-label>Nombre tipología</mat-label>
+          <input matInput name="name" [(ngModel)]="tipologia.nombre" required>
+        </mat-form-field>
       </div>
-      <div class="card-footer bg-transparent">
-        <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
-          <button type="button" class="btn btn-secondary card-footer__btn" (click)="close()">Cancelar</button>
-          <button type="submit" class="btn btn-warning" [disabled]="!form.valid">Guardar</button>
-        </div>
-      </div> 
-   
+
+      <!-- Tabs -->
+      <div class="col-12 col-md-12">
+        <mat-tab-group mat-align-tabs="center" [color]="'accent'">
+          <mat-tab label="Detalle">
+            <div class="d-flex mt-3 ps-2 pe-2">
+              <div class=" col-6 col-md-6 d-flex flex-column">
+                <mat-form-field class="control">
+                  <mat-label>Superficie Lote</mat-label>
+                  <input type="number" matInput name="supLote" [(ngModel)]="tipologia.supLote" required>
+                  <span matSuffix>m²</span>
+                </mat-form-field>
+
+                <mat-form-field class="control">
+                  <mat-label>Superficie cochera</mat-label>
+                  <input type="number" matInput name="supCochera" [(ngModel)]="tipologia.supCochera">
+                  <span matSuffix>m²</span>
+                </mat-form-field>
+
+                <mat-slide-toggle name="ampliacion" [(ngModel)]="tipologia.plantaAlta">Permite edificación
+                  planta alta</mat-slide-toggle>
+
+                <mat-form-field class="control mt-3">
+                  <mat-label>Cantidad máxima de habitaciones</mat-label>
+                  <mat-select name="habitaciones" (selectionChange)="select()"
+                    [(ngModel)]="tipologia.cantMaxHabitaciones" required>
+                    <mat-option value="0">
+                      Monoambiente
+                    </mat-option>
+                    <mat-option value="1"> 1 </mat-option>
+                    <mat-option value="2"> 2 </mat-option>
+                    <mat-option value="3"> 3 </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="col-6 col-md-6">
+                <h2>Superficie cubierta</h2>
+                <div class=" d-flex mt-6 flex-column scroll" *ngIf="tipologia.detalle.length != 0">
+
+                  <ng-template ngFor let-i="index" let-item [ngForOf]="tipologia.detalle">
+                    <div class="animate__animated animate__pulse">
+
+                      <mat-form-field class="control">
+                        <mat-label>{{item.name}}</mat-label>
+                        <input type="number" matInput name="sup" [(ngModel)]="item.supCubierta" required>
+                        <span matSuffix>m²</span>
+                      </mat-form-field>
+
+                    </div>
+                  </ng-template>
+                </div>
+
+                <app-empty-state *ngIf="tipologia.detalle.length == 0" [title]="'Cantidad de habitaciones'"
+                  [description]="'Por favor, seleccione cantidad máxima de habitaciones'"></app-empty-state>
+              </div>
+
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Fotos">
+            <div class="col-12 col-md-12 col-sm-12 mt-3 ps-2 pe-2">
+              <app-upload-image (listImg)="uploadImg($event)" [OnSetPrincipal]="true"></app-upload-image>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Planos">
+            <div class="col-12 col-md-12 col-sm-12 mt-3 ps-2 pe-2">
+              <app-upload-image (listImg)="uploadPlano($event)"></app-upload-image>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Notas">
+            <div class="mt-3 ps-2 pe-2">
+              <quill-editor [styles]="editorStyle" [modules]="config" name="editor" [(ngModel)]="tipologia.descripcion">
+              </quill-editor>
+            </div>
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+
+    </div>
+    <div class="card-footer bg-transparent">
+      <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
+        <button type="button" class="card-footer__btn" mat-flat-button color="basic" (click)="close()">Cancelar</button>
+        <button type="submit" mat-flat-button color="accent" [disabled]="!form.valid">Guardar</button>
+      </div>
+    </div>
+
   </form>
 </div>

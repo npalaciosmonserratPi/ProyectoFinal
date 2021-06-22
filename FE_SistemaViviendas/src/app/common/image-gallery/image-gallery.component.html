@@ -1,0 +1,12 @@
+<div class="col-12 col-md-12 col-sm-12 img-content">
+  <ng-template ngFor let-img let-i="index" [ngForOf]="image">
+    <div class="
+        img-content__card
+        animate__animated animate__fadeInDown
+      " (click)="openImage(img.url)">
+      <div class="text-center img-content__card-file mt-1 mb-3">
+        <img [src]="img.url" class="rounded img-content__card-file--img" alt="..." />
+      </div>
+    </div>
+  </ng-template>
+</div>

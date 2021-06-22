@@ -1,37 +1,87 @@
 <div class="row ">
-  <!-- <div class="col-12 col-md-12">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
-    </div>
-    
-  </div> -->
   <div class="col-12 col-md-12 d-flex justify-content-end">
-    <button type="button" class="btn btn-warning d-flex" (click)="add()"><i class="fa fa-plus-circle content__add-icon" aria-hidden="true"></i>
-      Agregar
+    <button type="button" class="d-flex me-1" mat-flat-button color="primary">
+      <mat-icon class="me-1">monetization_on</mat-icon>Ver costos
+    </button>
+    <button type="button" class="d-flex" mat-flat-button color="accent" (click)="add()">
+      <mat-icon class="me-1">add_circle</mat-icon>Agregar
     </button>
   </div>
-  
-  <div class="col-12 col-12 mt-3 scroll">
-    <div class="card_tipologia">
-      <img class="col-4 col-md-4 card_tipologia__img" src="../../../assets/casa.jpg" alt="">
-      <div class="col-4">
-        <p>Nombre</p>
-        <p>Superficie lote</p>
-        <p>Superficie cubierta</p>
+
+  <div class="col-12 col-12 mt-3 scroll" *ngIf="tipologyList.length != 0">
+    <ng-template ngFor let-item [ngForOf]="tipologyList">
+
+      <div class="card_tipologia" matTooltip="{{item.activo ? 'Activo' : 'suspendido'}}"
+        [matTooltipPosition]="'before'">
+        <div class="state" [ngClass]="{'state-suspend ': !item.activo,
+                                        'state-active': item.activo}">
+        </div>
+
+        <div class="card_tipologia__wrapper mt-2">
+          <div class="col-12 mt-1">
+            <h4> <strong> Vivienda {{ item.nombre }}</strong> </h4>
+          </div>
+
+          <div class="card_tipologia__info">
+            <div class="card_tipologia__wrapperImg">
+
+              <ng-template [ngIf]="item.fotos">
+                <ng-template ngFor let-img [ngForOf]="item.fotos">
+                  <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__wrapperImg--img" [src]="img.url"
+                    alt="">
+                </ng-template>
+              </ng-template>
+
+              <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__wrapperImg--img"
+                src="../../../assets/no-image.png" alt="">
+
+            </div>
+            <div class="card_tipologia__details">
+              <div class="col-6 col-md-6 col-sm-12">
+                <p> Superficie lote: {{ item.supLote }} m²</p>
+                <p>Costo por m² cubierto: $ {{ item.costom2Cubierto | number:'3.2-2'}}</p>
+                <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones == 0 ? 'Monoambiente' :
+                  item.cantMaxHabitaciones}}</p>
+              </div>
+              <div class="col-6 col-md-6 col-sm-12">
+                <p *ngIf="item.supCochera">Superficie semi-cubierta: {{ item.supCochera }} m²</p>
+                <p *ngIf="item.costom2SemiCubierto">Costo por m² semi-cubierto: $ {{ item.costom2SemiCubierto |
+                  number:'3.2-2'
+                  }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-1 card_tipologia__actions">
+          <div class="btn-group">
+            <mat-icon aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">more_horiz
+            </mat-icon>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="consult(item)">
+                  <mat-icon class="me-2">visibility</mat-icon>Consultar
+                </a></li>
+              <li><a class="dropdown-item" (click)="edit(item.id)">
+                  <mat-icon class="me-2">create</mat-icon>Editar
+                </a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" (click)="annul(item.id)" *ngIf="item.activo">Suspender</a></li>
+              <li><a class="dropdown-item" (click)="habilitar(item.id)" *ngIf="!item.activo">Habilitar</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-4">
-        <p>Costo por m2 semicubierto</p>
-        <p>Costo por m2 cubierto</p>
-        <p>Cantidad máxima de habitaciones</p>
-      </div>
-      <div class="col-1 card_tipologia__actions">
-        <i class="fa fa-eye card_tipologia__actions--hover" (click)="consult('prueba')"></i>
-        <i class="fa fa-pencil card_tipologia__actions--hover" (click)="edit('prueba')" ></i>
-        <i class="fa fa-ban card_tipologia__actions--hover" style="color: red;" (click)="annul()"></i>
-      </div>
-    </div>
+
+    </ng-template>
+
+  </div>
+
+  <div class="mt-3 ms-2">
+    <app-empty-state *ngIf="tipologyList.length == 0" [title]="'No existen tipologias cargadas'"
+      [description]="'Presione en Agregar para crear una nueva tipologia'">
+    </app-empty-state>
   </div>
 </div>

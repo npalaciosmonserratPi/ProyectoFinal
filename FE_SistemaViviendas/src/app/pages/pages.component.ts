@@ -13,12 +13,13 @@ export class PagesComponent implements OnInit {
   title: string;
 
   constructor(private router: Router) { 
-    this.getDataReoute().subscribe(resp => {
-      this.title = resp.title;
-    });
+    
   }
 
   ngOnInit() {
+    this.getDataReoute().subscribe(resp => {
+      this.title = resp.title;
+    });
   }
 
   getDataReoute(): Observable<any> {

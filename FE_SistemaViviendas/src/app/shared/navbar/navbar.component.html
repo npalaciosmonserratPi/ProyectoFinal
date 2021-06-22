@@ -1,18 +1,14 @@
-
 <nav class="nav rt-bg-color-primary">
   <span class="nav__text">
-    <i class="fa fa-user-circle-o icon-user" aria-hidden="true"></i> <h5>{{userName}}</h5>
+    <mat-icon class="icon-user">person</mat-icon>
+    <h5 class="userName">{{userName}}</h5>
   </span>
-  <!-- <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropdown</span>
-  </button> -->
   <span data-bs-toggle="dropdown" aria-expanded="false" aria-hidden="true">
-    <i class="fa fa-ellipsis-v config-icon"></i>
+    <mat-icon class="config-icon">more_vert</mat-icon>
   </span>
-  
+
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item"><i class="fa fa-users space-icon"></i>Administrar usuarios</a></li>
-    <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out space-icon"></i>Cerrar sesion</a></li>
+    <li><a class="dropdown-item"><mat-icon class="space-icon">group</mat-icon>Administrar usuarios</a></li>
+    <li><a class="dropdown-item" (click)="logout()"><mat-icon class="space-icon">logout</mat-icon>Cerrar sesion</a></li>
   </ul>
 </nav>
-
