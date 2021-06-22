@@ -4,34 +4,35 @@
 
     <form #f="ngForm" class="form" autocomplete="off">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Usuario</mat-label>
-          <input matInput (blur)="userInvalid = false" name="user" [(ngModel)]="userDto.userName" 
-                 required autocomplete="off">
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput (blur)="userInvalid = false" name="user" [(ngModel)]="userDto.userName" required
+          autocomplete="off">
 
-          <mat-error *ngIf="(!f.controls.user?.valid && f.controls.user?.touched)">
-            Ingrese el usuario.
-          </mat-error>
-          <mat-error *ngIf="userInvalid">
-            Ingrese un usuario válido.
-          </mat-error>
+        <mat-error *ngIf="(!f.controls.user?.valid && f.controls.user?.touched)">
+          Ingrese el usuario.
+        </mat-error>
+        <mat-error *ngIf="userInvalid">
+          Ingrese un usuario válido.
+        </mat-error>
 
-        </mat-form-field>
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" class="mt-3">
-          <mat-label>Contraseña</mat-label>
-          <input matInput (blur)="passwordInvalid = false" type="password"
-          name="password" [(ngModel)]="userDto.password" (keyup.enter)="login(f)" required autocomplete="off">
-          <mat-error *ngIf="(!f.controls.password?.valid && f.controls.password?.touched)">
-            Ingrese la contraseña.
-          </mat-error>
+      <mat-form-field class="mt-3">
+        <mat-label>Contraseña</mat-label>
+        <input matInput (blur)="passwordInvalid = false" type="password" name="password" [(ngModel)]="userDto.password"
+          (keyup.enter)="login(f)" required autocomplete="off">
+        <mat-error *ngIf="(!f.controls.password?.valid && f.controls.password?.touched)">
+          Ingrese la contraseña.
+        </mat-error>
 
-          <mat-error *ngIf="passwordInvalid">
-            Ingrese una contraseña válida.
-          </mat-error>
-        </mat-form-field>
+        <mat-error *ngIf="passwordInvalid">
+          Ingrese una contraseña válida.
+        </mat-error>
+      </mat-form-field>
 
-        <button class="form__btn" mat-flat-button color="accent" (click)="login(f)" [disabled]='isLoading'>Iniciar sesión</button>
+      <button class="form__btn" mat-flat-button color="accent" (click)="login(f)" [disabled]='isLoading'>Iniciar
+        sesión</button>
     </form>
   </div>
 </div>

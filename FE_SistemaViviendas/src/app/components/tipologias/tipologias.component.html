@@ -1,26 +1,18 @@
 <div class="row ">
-  <!-- <div class="col-12 col-md-12">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
-    </div>
-    
-  </div> -->
   <div class="col-12 col-md-12 d-flex justify-content-end">
-    <!-- <button type="button" class="btn btn-warning d-flex" (click)="add()"><i class="fa fa-plus-circle content__add-icon"
-        aria-hidden="true"></i>
-      Agregar
-    </button> -->
-    <button class="d-flex" mat-flat-button color="accent" (click)="add()"> <mat-icon class="me-1">add_circle</mat-icon>Agregar</button>
+    <button type="button" class="d-flex me-1" mat-flat-button color="primary">
+      <mat-icon class="me-1">monetization_on</mat-icon>Ver costos
+    </button>
+    <button type="button" class="d-flex" mat-flat-button color="accent" (click)="add()">
+      <mat-icon class="me-1">add_circle</mat-icon>Agregar
+    </button>
   </div>
 
   <div class="col-12 col-12 mt-3 scroll" *ngIf="tipologyList.length != 0">
     <ng-template ngFor let-item [ngForOf]="tipologyList">
 
-      <div class="card_tipologia" container='body' tooltipClass="my-custom-class" placement="left"
-        [ngbTooltip]="!item.activo ? tooltipSuspend : tooltipActive">
+      <div class="card_tipologia" matTooltip="{{item.activo ? 'Activo' : 'suspendido'}}"
+        [matTooltipPosition]="'before'">
         <div class="state" [ngClass]="{'state-suspend ': !item.activo,
                                         'state-active': item.activo}">
         </div>
@@ -64,14 +56,15 @@
 
         <div class="col-1 card_tipologia__actions">
           <div class="btn-group">
-            <mat-icon aria-hidden="true" data-bs-toggle="dropdown"
-              aria-expanded="false">more_horiz
+            <mat-icon aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">more_horiz
             </mat-icon>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" (click)="consult(item)">
-                <mat-icon class="me-2">visibility</mat-icon>Consultar</a></li>
+                  <mat-icon class="me-2">visibility</mat-icon>Consultar
+                </a></li>
               <li><a class="dropdown-item" (click)="edit(item.id)">
-                <mat-icon class="me-2">create</mat-icon>Editar</a></li>
+                  <mat-icon class="me-2">create</mat-icon>Editar
+                </a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -92,14 +85,3 @@
     </app-empty-state>
   </div>
 </div>
-
-
-<ng-template #tooltipEditar>Editar </ng-template>
-
-<ng-template #tooltipSuspender>Suspender </ng-template>
-
-<ng-template #tooltipVer>Ver más informacion </ng-template>
-
-<ng-template #tooltipSuspend>Suspendida </ng-template>
-
-<ng-template #tooltipActive>Activa </ng-template>

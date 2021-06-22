@@ -19,7 +19,7 @@ import { AgregarTipologiaAction, EditarTipologiaAction } from '../../../common/r
 export class TipologiaFormComponent implements OnInit {
 
   editorStyle = { 
-    height: '400px',
+    height: '20rem',
     backgroundColor: '#ffff',
   }
 

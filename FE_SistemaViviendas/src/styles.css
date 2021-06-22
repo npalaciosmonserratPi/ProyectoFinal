@@ -13,7 +13,7 @@
 }
 
 .body-section {
-  height: 67vh;
+  height: 94%;
 }
 
 /** CSS State */
@@ -72,6 +72,13 @@
 .my-custom-class .arrow::before {
   background-color: #ffc107;
   color: black;
+}
+
+/**Input type number*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 html, body { height: 100%; }
