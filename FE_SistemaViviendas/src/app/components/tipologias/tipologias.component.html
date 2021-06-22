@@ -9,10 +9,11 @@
     
   </div> -->
   <div class="col-12 col-md-12 d-flex justify-content-end">
-    <button type="button" class="btn btn-warning d-flex" (click)="add()"><i class="fa fa-plus-circle content__add-icon"
+    <!-- <button type="button" class="btn btn-warning d-flex" (click)="add()"><i class="fa fa-plus-circle content__add-icon"
         aria-hidden="true"></i>
       Agregar
-    </button>
+    </button> -->
+    <button class="d-flex" mat-flat-button color="accent" (click)="add()"> <mat-icon class="me-1">add_circle</mat-icon>Agregar</button>
   </div>
 
   <div class="col-12 col-12 mt-3 scroll" *ngIf="tipologyList.length != 0">
@@ -63,13 +64,14 @@
 
         <div class="col-1 card_tipologia__actions">
           <div class="btn-group">
-            <i class="fa fa-ellipsis-h fa-actions" aria-hidden="true" data-bs-toggle="dropdown"
-              aria-expanded="false"></i>
+            <mat-icon aria-hidden="true" data-bs-toggle="dropdown"
+              aria-expanded="false">more_horiz
+            </mat-icon>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="consult(item)"><i
-                    class="fa fa-eye card_tipologia__actions--icon me-2"></i>Consultar</a></li>
-              <li><a class="dropdown-item" (click)="edit(item.id)"><i
-                    class="fa fa-pencil card_tipologia__actions--icon me-2"></i>Editar</a></li>
+              <li><a class="dropdown-item" (click)="consult(item)">
+                <mat-icon class="me-2">visibility</mat-icon>Consultar</a></li>
+              <li><a class="dropdown-item" (click)="edit(item.id)">
+                <mat-icon class="me-2">create</mat-icon>Editar</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

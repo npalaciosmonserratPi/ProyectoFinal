@@ -6,11 +6,13 @@ import { EmptyStateComponent } from './empty-state/empty-state.component';
 import { UploadImageComponent } from './upload-file/upload-image/upload-image.component';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { ImageComponent } from './image-gallery/image/image.component';
+import { ComponentMaterialModule } from './material/component-material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    PixelSpinnerModule
+    PixelSpinnerModule,
+    ComponentMaterialModule
   ],
   declarations: [
     UploadImageComponent,
@@ -20,6 +22,7 @@ import { ImageComponent } from './image-gallery/image/image.component';
     ImageComponent
   ],
   exports: [
+    ComponentMaterialModule,
     UploadImageComponent, 
     SpinnerComponent,
     EmptyStateComponent,

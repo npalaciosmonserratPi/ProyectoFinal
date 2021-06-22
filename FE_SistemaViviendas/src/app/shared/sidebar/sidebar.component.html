@@ -8,7 +8,8 @@
       <ng-template ngFor let-item [ngForOf]="menuItem">
         <li class="sidebar__menu" [routerLinkActive]="['rt-bg-color-primary']" >
           <a [routerLink]="[item.path]" class="sidebar__item-menu">
-            <i class="sidebar__item-menu--icon" [class]="item.icon"></i>
+            <!-- <i class="sidebar__item-menu--icon" [class]="item.icon"></i> -->
+            <mat-icon class="sidebar__item-menu--icon">{{item.icon}}</mat-icon>
             <span class="sidebar__item-menu--name">{{item.name}}</span>
           </a>
         </li>
@@ -18,7 +19,9 @@
           <ng-template ngFor let-childItem [ngForOf]="item.childItems">
             <li>
               <a [href]="childItem.path">
-                <i [class]="childItem.icon"></i>
+                <!-- <i [class]="childItem.icon"></i> -->
+                <mat-icon class="sidebar__item-menu--icon">{{childItem.icon}}</mat-icon>
+
                 <span>{{childItem.name}}</span>
               </a>
             </li>

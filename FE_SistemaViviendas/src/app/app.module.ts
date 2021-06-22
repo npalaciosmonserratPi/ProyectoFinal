@@ -16,6 +16,9 @@ import { appReducers } from './app-reducer';
 import { environment } from '../environments/environment';
 import { ComponentsModule } from './components/components.module';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentMaterialModule } from './common/material/component-material.module';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { CommonModule } from '@angular/common';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    ComponentsModule
+    ComponentsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

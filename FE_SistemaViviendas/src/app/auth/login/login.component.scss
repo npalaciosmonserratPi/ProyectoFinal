@@ -10,8 +10,8 @@
 
   &__card {
     background-color: white;
-    width: 30rem;
-    height: 40rem;
+    width: 28rem;
+    height: 35rem;
     border-radius: 2rem;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
   flex-direction: column;
   width: 20rem;
 
-  &__input {
-    caret-color: #ffcc00;
+  &__btn {
+    align-self: center;
   }
 }

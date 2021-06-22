@@ -13,7 +13,7 @@
 }
 
 .body-section {
-  height: 73vh;
+  height: 67vh;
 }
 
 /** CSS State */
@@ -61,21 +61,6 @@
   background-color: rgba(255, 255, 255, 0.452);
 }
 
-/*CSS controles de form*/
-.form-control:focus,
-.form-select:focus,
-.form-check-input:focus {
-  border-color: #ffe168 !important;
-  box-shadow: none !important;
-  box-shadow: 0 0 0 0.25rem rgba(255, 225, 104, 0.2) !important;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 /*CSS Tooltip*/
 .my-custom-class .tooltip-inner {
   background-color: #ffc107;
@@ -88,3 +73,6 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #ffc107;
   color: black;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
