@@ -1,0 +1,31 @@
+<form #f="ngForm">
+  <mat-card-title>
+    <h1 class="title">Costo de contrucción</h1>
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="mt-2 d-flex flex-column content">
+
+      <mat-form-field class="control">
+        <mat-label>Costo m2 cubierto</mat-label>
+        <input matInput name="amount" [prefix]="'$ '" mask="separator.2" thousandSeparator="." separatorLimit="99999999"
+          required>
+      </mat-form-field>
+
+      <mat-form-field class="control">
+        <mat-label>Costo m2 semi-cubierto</mat-label>
+        <input matInput name="amount" [prefix]="'$ '" mask="separator.2" thousandSeparator="." separatorLimit="99999999"
+          required>
+      </mat-form-field>
+
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <mat-card-footer>
+    <div class="col-12 col-md-12 mt-2 d-flex justify-content-end align-items-end">
+      <button type="button" mat-flat-button color="basic" (click)="close()">Cancelar</button>
+      <button type="button" mat-flat-button color="accent" [disabled]="!f.valid">Guardar</button>
+    </div>
+  </mat-card-footer>
+</form>

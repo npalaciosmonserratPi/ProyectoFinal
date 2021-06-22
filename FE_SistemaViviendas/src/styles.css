@@ -12,6 +12,10 @@
   color: #ffe168;
 }
 
+.body-section-wrapper {
+  height: 100%;
+}
+
 .body-section {
   height: 94%;
 }

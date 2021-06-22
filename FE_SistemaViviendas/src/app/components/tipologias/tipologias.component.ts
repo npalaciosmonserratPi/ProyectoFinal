@@ -8,6 +8,8 @@ import { TipologiasService } from './tipologias.service';
 import { SuspenderTipologiaAction, HabilitarTipologiaAction } from '../../common/reducer/tipologia.accions';
 import { Title } from '@angular/platform-browser';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../../common/reducer/ui.accions';
+import { MatDialog } from '@angular/material/dialog';
+import { ConstructionCostComponent } from '../construction-cost/construction-cost.component';
 
 @Component({
   selector: 'app-tipologias',
@@ -21,7 +23,8 @@ export class TipologiasComponent implements OnInit {
   constructor(private _router: Router,
               private _activatedRoute: ActivatedRoute,
               private _tipologyService: TipologiasService,
-              private _store: Store<AppState>) { }
+              private _store: Store<AppState>,
+              private _dialog:  MatDialog) { }
 
   ngOnInit() {
     this._store.select('tipologias').subscribe(resp => {
@@ -72,6 +75,13 @@ export class TipologiasComponent implements OnInit {
   consult(tipologia: TipologiaModel) {
     this._router.navigate(['./consult', tipologia.id], {relativeTo: this._activatedRoute});
 
+  }
+
+  openConstructionCost() {
+    this._dialog.open(ConstructionCostComponent, {
+      disableClose: true,
+     
+    });
   }
 
 }

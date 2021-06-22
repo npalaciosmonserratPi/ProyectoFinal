@@ -17,7 +17,6 @@ import { environment } from '../environments/environment';
 import { ComponentsModule } from './components/components.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ComponentMaterialModule } from './common/material/component-material.module';
 
 
 @NgModule({

@@ -1,11 +1,6 @@
 
-.tipology {
-  height: 100%;
-
-}
-
 .control {
-  width: 50%;
+  width: 40%;
 }
 
 .card-footer {
@@ -25,8 +20,11 @@
   }
 }
 
-.mat-form-field-underline {
-  background-color: green;
+.detalle-tipologia {
+  display: flex;
+  align-items: center;
+  justify-content:space-around
 }
+
 
 
