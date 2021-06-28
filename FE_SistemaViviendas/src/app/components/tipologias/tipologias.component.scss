@@ -13,7 +13,7 @@
 }
 
 .card_tipologia {
-  height: 12rem;
+  height: 10rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   margin-bottom: 1.5rem;
@@ -50,6 +50,10 @@
     display: flex;
     justify-content: space-around;
     align-self: center;
+
+    &--icon {
+      font-size: 2rem;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <div class="row body-section-wrapper">
   <div class="body-section">
     <div class="col-6 col-md-6">
-      <h2> <strong> Vivienda {{tipologia.nombre}} </strong></h2>
+      <h1> <strong> Vivienda {{tipologia.nombre}} </strong></h1>
     </div>
     <div class="col-12 col-md-12">
       <mat-tab-group mat-align-tabs="center" [color]="'accent'">
@@ -13,13 +13,13 @@
               $ {{ tipologia.costom2Cubierto | number:'3.2-2' }}
             </p>
             <p>
-              <strong>Superficie de cochera:</strong>
-              {{ tipologia.supCochera || "-" }} {{ tipologia.supCochera ? 'm²' : ''}}
-            </p>
-            <p>
               <strong>Precio m² superfice semi-cubierta:</strong>
               {{tipologia.costom2SemiCubierto ? '$' : '-'}} {{ tipologia.costom2SemiCubierto | number:'3.2-2' || "-"
               }}
+            </p>
+            <p>
+              <strong>Superficie de cochera:</strong>
+              {{ tipologia.supCochera || "-" }} {{ tipologia.supCochera ? 'm²' : ''}}
             </p>
             <p>
               <strong>Permite ampliacion planta alta:</strong>
@@ -30,19 +30,21 @@
               {{ tipologia.cantMaxHabitaciones == 0 ? 'Monoambiente' : tipologia.cantMaxHabitaciones }}
             </p>
             <hr />
-            <h5>Detalle de viviendas</h5>
+            <h2>Detalle de viviendas</h2>
             <div class="col-6 col-md-6">
               <table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">Cantidad habitaciones</th>
                     <th scope="col">m² cubierto</th>
+                    <th scope="col">Costo</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of tipologia.detalle">
                     <td>{{ item.name }}</td>
                     <td>{{ item.supCubierta }} <span>m²</span></td>
+                    <td><span>$</span></td>
                   </tr>
                 </tbody>
               </table>

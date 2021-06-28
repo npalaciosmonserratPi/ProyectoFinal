@@ -20,6 +20,11 @@
   height: 94%;
 }
 
+.control {
+  width: 40%;
+}
+
+
 /** CSS State */
 .state {
   height: 100%;

@@ -1,5 +1,7 @@
-<div class="mb-3 mt-2 col-6 d-flex">
-  <input class="form-control" type="file" id="formFile" accept=".png, .jpg, .jpeg"
+<div class="mb-3 mt-2 col-12 d-flex justify-content-end">
+  <label class="btn btn-color d-flex justify-content-center col-3" for="formFile"> <mat-icon>file_upload</mat-icon> Seleccionar imagenes</label>
+  <input class="form-control" style="display:none" type="file" id="formFile" name="formFile" 
+      accept="image/*"
     (change)="selectImage($event.target.files)" multiple>
 </div>
 

@@ -1,0 +1,50 @@
+<div class="row body-section-wrapper">
+  <form #f="ngForm">
+    <div class="body-section">
+      <mat-form-field class="control">
+        <mat-label>Nombre</mat-label>
+        <input matInput required>
+      </mat-form-field>
+      <div class="d-flex">
+        
+        <div class="col-6 col-md-6 d-flex flex-column mt-3 pe-2 ps-2">
+         
+          <mat-form-field class="control">
+            <mat-label>Porcentaje para adjudicación</mat-label>
+            <input type="text" mask="percent" suffix="%" matInput required>
+          </mat-form-field>
+
+          <mat-slide-toggle>Aplica descuento</mat-slide-toggle>
+
+          <mat-form-field class="control mt-4">
+            <mat-label>Descuento de adjudicación</mat-label>
+            <input type="text" mask="percent" suffix="%" matInput required>
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-6 col-md-6 mt-3">
+          <h3>Documentación requerida</h3>
+          <div class="d-flex flex-column">
+            <mat-checkbox class="ms-2">DNI</mat-checkbox>
+            <mat-checkbox class="ms-2">Certificado de alumno regular</mat-checkbox>
+            <mat-checkbox class="ms-2">Certificado de trabajo</mat-checkbox>
+          </div>
+
+        </div>
+
+      </div>
+      <mat-form-field class="col-12 col-md-12 mt-3">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput rows="8"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="card-footer bg-transparent">
+      <div class="col-12 col-md-12 d-flex justify-content-end align-items-end">
+        <button type="button" class="card-footer__btn" mat-flat-button color="basic" (click)="close()">Cancelar</button>
+        <button type="submit" mat-flat-button color="accent" [disabled]="!f.valid">Guardar</button>
+      </div>
+    </div>
+  </form>
+
+</div>

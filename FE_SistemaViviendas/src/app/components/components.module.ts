@@ -14,6 +14,8 @@ import { TipologiasComponent } from './tipologias/tipologias.component';
 import { TipologiaFormComponent } from './tipologias/tipologia-form/tipologia-form.component';
 import { TipologiaConsultComponent } from './tipologias/tipologia-consult/tipologia-consult.component';
 import { ConstructionCostComponent } from './construction-cost/construction-cost.component';
+import { AgreementComponent } from './agreement/agreement.component';
+import { AgreementFormComponent } from './agreement/agreement-form/agreement-form.component';
 
 @NgModule({
   imports: [
@@ -29,14 +31,18 @@ import { ConstructionCostComponent } from './construction-cost/construction-cost
     TipologiasComponent,
     TipologiaFormComponent,
     TipologiaConsultComponent,
-    ConstructionCostComponent
+    ConstructionCostComponent,
+    AgreementComponent,
+    AgreementFormComponent
   ],
   exports: [
     DashboardComponent,
     TipologiasComponent,
     TipologiaFormComponent,
     TipologiaConsultComponent,
-    ConstructionCostComponent
+    ConstructionCostComponent,
+    AgreementComponent,
+    AgreementFormComponent
   ],
   providers: [
     CurrencyPipe

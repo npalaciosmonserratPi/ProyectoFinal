@@ -8,6 +8,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class ConstructionCostComponent implements OnInit {
 
+  costoCubierto: string;
+  costoSemiCubierto: string;
+
   constructor(public _dialogRef: MatDialogRef<ConstructionCostComponent>,
               ) { }
 
