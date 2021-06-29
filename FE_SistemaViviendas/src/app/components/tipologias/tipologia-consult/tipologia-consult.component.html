@@ -4,33 +4,41 @@
       <h1> <strong> Vivienda {{tipologia.nombre}} </strong></h1>
     </div>
     <div class="col-12 col-md-12">
-      <mat-tab-group mat-align-tabs="center" [color]="'accent'">
+      <mat-tab-group mat-align-tabs="start" [color]="'accent'">
         <mat-tab label="Detalle">
           <div class="mt-3 ps-2 pe-2">
-            <p><strong>Superficie de Lote:</strong> {{ tipologia.supLote }} m²</p>
-            <p>
-              <strong>Precio m² superficie cubierta:</strong>
-              $ {{ tipologia.costom2Cubierto | number:'3.2-2' }}
-            </p>
-            <p>
-              <strong>Precio m² superfice semi-cubierta:</strong>
-              {{tipologia.costom2SemiCubierto ? '$' : '-'}} {{ tipologia.costom2SemiCubierto | number:'3.2-2' || "-"
-              }}
-            </p>
-            <p>
-              <strong>Superficie de cochera:</strong>
-              {{ tipologia.supCochera || "-" }} {{ tipologia.supCochera ? 'm²' : ''}}
-            </p>
-            <p>
-              <strong>Permite ampliacion planta alta:</strong>
-              {{ tipologia.plantaAlta ? "Si" : "No" }}
-            </p>
-            <p>
-              <strong>Cantidad máxima de habitaciones:</strong>
-              {{ tipologia.cantMaxHabitaciones == 0 ? 'Monoambiente' : tipologia.cantMaxHabitaciones }}
-            </p>
-            <hr />
-            <h2>Detalle de viviendas</h2>
+            <div class="d-flex">
+              <div class="col-7 col-md-7">
+                <p><strong>Superficie de Lote:</strong> {{ tipologia.supLote }} m²</p>
+                <p>
+                  <strong>Superficie de cochera:</strong>
+                  {{ tipologia.supCochera || "-" }} {{ tipologia.supCochera ? 'm²' : ''}}
+                </p>
+                <p>
+                  <strong>Permite ampliacion planta alta:</strong>
+                  {{ tipologia.plantaAlta ? "Si" : "No" }}
+                </p>
+                <p>
+                  <strong>Cantidad máxima de habitaciones:</strong>
+                  {{ tipologia.cantMaxHabitaciones == 0 ? 'Monoambiente' : tipologia.cantMaxHabitaciones }}
+                </p>
+              </div>
+              <div class="col-5 col-md-5 detail-cost">
+                <h3> <strong> Costos base</strong></h3>
+                <p>
+                  <strong>Precio m² superficie cubierta:</strong>
+                  $ {{ tipologia.costom2Cubierto | number:'3.2-2' }}
+                </p>
+                <p>
+                  <strong>Precio m² superfice semi-cubierta:</strong>
+                  {{tipologia.costom2SemiCubierto ? '$' : '-'}} {{ tipologia.costom2SemiCubierto | number:'3.2-2' || "-"
+                  }}
+                </p> 
+              </div>
+            </div>
+           
+            <!-- <hr /> -->
+            <h2 class="mb-0 mt-3">Detalle de viviendas</h2>
             <div class="col-6 col-md-6">
               <table class="table table-striped">
                 <thead>

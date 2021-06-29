@@ -7,7 +7,7 @@ const routes: Routes = [
   {path: '**', component: LoginComponent}
 ];
 
-export const APP_ROUTES = RouterModule.forRoot( routes, { useHash: true });
+export const APP_ROUTES = RouterModule.forRoot( routes);
 
 // @NgModule({
 //   imports: [RouterModule.forRoot(routes, {useHash: true})],

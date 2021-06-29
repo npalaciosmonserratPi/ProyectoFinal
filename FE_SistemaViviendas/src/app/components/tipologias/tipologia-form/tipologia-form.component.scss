@@ -8,8 +8,7 @@
 
 .scroll {
   overflow-x: hidden;
-  overflow-y: auto;
-  height: 40vh;
+  overflow-y: hidden;
 
   @media screen and (min-width: 1440px) {
     height: auto;
