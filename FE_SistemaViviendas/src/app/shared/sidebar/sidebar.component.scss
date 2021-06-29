@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  //width: 20rem;
   height: 100%;
   background-image: linear-gradient(to top, #f5f1f1 78%, #ffe168 95%);
 
@@ -46,6 +45,8 @@
 
     &--name {
       text-transform: capitalize;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
     }
   }
 }

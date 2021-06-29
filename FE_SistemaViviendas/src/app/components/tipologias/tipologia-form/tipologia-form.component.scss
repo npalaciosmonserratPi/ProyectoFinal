@@ -1,13 +1,4 @@
 
-.tipology {
-  height: 100%;
-
-}
-
-.control {
-  width: 50%;
-}
-
 .card-footer {
   &__btn {
     margin-right: 0.5rem;
@@ -17,16 +8,18 @@
 
 .scroll {
   overflow-x: hidden;
-  overflow-y: auto;
-  height: 40vh;
+  overflow-y: hidden;
 
   @media screen and (min-width: 1440px) {
     height: auto;
   }
 }
 
-.mat-form-field-underline {
-  background-color: green;
+.detalle-tipologia {
+  display: flex;
+  align-items: center;
+  justify-content:space-around
 }
+
 
 

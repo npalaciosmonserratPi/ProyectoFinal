@@ -13,8 +13,9 @@
 }
 
 .card_tipologia {
-  height: 12rem;
+  height: 10rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  //box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   display: flex;
   margin-bottom: 1.5rem;
 
@@ -23,16 +24,21 @@
     flex-direction: column;
     padding-left: 1rem;
     width: 100%;
+
+    &--name {
+      margin-bottom: 0;
+    }
   }
 
   &__info {
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
 
   &__wrapperImg {
     width: 11rem;
-    height: 8rem;
+    height: 7.5rem;
 
     &--img {
       height: 77%;
@@ -50,6 +56,10 @@
     display: flex;
     justify-content: space-around;
     align-self: center;
+
+    &--icon {
+      font-size: 2rem;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -13,13 +13,12 @@ export class PagesComponent implements OnInit {
   title: string;
 
   constructor(private router: Router) { 
-    
-  }
-
-  ngOnInit() {
     this.getDataReoute().subscribe(resp => {
       this.title = resp.title;
     });
+  }
+
+  ngOnInit() {
   }
 
   getDataReoute(): Observable<any> {

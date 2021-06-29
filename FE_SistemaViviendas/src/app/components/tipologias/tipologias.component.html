@@ -1,6 +1,6 @@
 <div class="row ">
   <div class="col-12 col-md-12 d-flex justify-content-end">
-    <button type="button" class="d-flex me-1" mat-flat-button color="primary">
+    <button type="button" class="d-flex me-1" mat-flat-button color="primary" (click)="openConstructionCost()">
       <mat-icon class="me-1">monetization_on</mat-icon>Ver costos
     </button>
     <button type="button" class="d-flex" mat-flat-button color="accent" (click)="add()">
@@ -11,18 +11,18 @@
   <div class="col-12 col-12 mt-3 scroll" *ngIf="tipologyList.length != 0">
     <ng-template ngFor let-item [ngForOf]="tipologyList">
 
-      <div class="card_tipologia" matTooltip="{{item.activo ? 'Activo' : 'suspendido'}}"
+      <div class="card_tipologia mt-1" matTooltip="{{item.activo ? 'Activo' : 'suspendido'}}"
         [matTooltipPosition]="'before'">
         <div class="state" [ngClass]="{'state-suspend ': !item.activo,
                                         'state-active': item.activo}">
         </div>
 
         <div class="card_tipologia__wrapper mt-2">
-          <div class="col-12 mt-1">
-            <h4> <strong> Vivienda {{ item.nombre }}</strong> </h4>
+          <div class="col-12">
+            <h3 class="card_tipologia__wrapper--name"> <strong> Vivienda {{ item.nombre }}</strong> </h3>
           </div>
 
-          <div class="card_tipologia__info">
+          <div class="card_tipologia__info mt-1">
             <div class="card_tipologia__wrapperImg">
 
               <ng-template [ngIf]="item.fotos">
@@ -30,7 +30,7 @@
                   <img *ngIf="img.isPricipal" class="col-4 col-md-4 card_tipologia__wrapperImg--img" [src]="img.url"
                     alt="">
                 </ng-template>
-              </ng-template>
+              </ng-template> 
 
               <img *ngIf="!item.fotos" class="col-4 col-md-4 card_tipologia__wrapperImg--img"
                 src="../../../assets/no-image.png" alt="">
@@ -39,15 +39,12 @@
             <div class="card_tipologia__details">
               <div class="col-6 col-md-6 col-sm-12">
                 <p> Superficie lote: {{ item.supLote }} m²</p>
-                <p>Costo por m² cubierto: $ {{ item.costom2Cubierto | number:'3.2-2'}}</p>
                 <p>Cantidad máxima de habitaciones: {{ item.cantMaxHabitaciones == 0 ? 'Monoambiente' :
                   item.cantMaxHabitaciones}}</p>
               </div>
               <div class="col-6 col-md-6 col-sm-12">
+                <p> Permite ampliación planta alta: {{item.plantaAlta ? 'SI' : 'NO'}} </p>
                 <p *ngIf="item.supCochera">Superficie semi-cubierta: {{ item.supCochera }} m²</p>
-                <p *ngIf="item.costom2SemiCubierto">Costo por m² semi-cubierto: $ {{ item.costom2SemiCubierto |
-                  number:'3.2-2'
-                  }}</p>
               </div>
             </div>
 
@@ -56,7 +53,7 @@
 
         <div class="col-1 card_tipologia__actions">
           <div class="btn-group">
-            <mat-icon aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false">more_horiz
+            <mat-icon aria-hidden="true" data-bs-toggle="dropdown" aria-expanded="false" class="card_tipologia__actions--icon">more_horiz
             </mat-icon>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" (click)="consult(item)">

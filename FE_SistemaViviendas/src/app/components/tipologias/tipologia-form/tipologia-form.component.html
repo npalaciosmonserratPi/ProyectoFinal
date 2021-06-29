@@ -1,4 +1,4 @@
-<div class="row tipology">
+<div class="row body-section-wrapper">
   <form #form="ngForm" (submit)="save()">
 
     <div class="body-section">
@@ -12,7 +12,7 @@
 
       <!-- Tabs -->
       <div class="col-12 col-md-12">
-        <mat-tab-group mat-align-tabs="center" [color]="'accent'">
+        <mat-tab-group mat-align-tabs="start" [color]="'accent'">
           <mat-tab label="Detalle">
             <div class="d-flex mt-3 ps-2 pe-2">
               <div class=" col-6 col-md-6 d-flex flex-column">
@@ -50,20 +50,26 @@
                 <div class=" d-flex mt-6 flex-column scroll" *ngIf="tipologia.detalle.length != 0">
 
                   <ng-template ngFor let-i="index" let-item [ngForOf]="tipologia.detalle">
-                    <div class="animate__animated animate__pulse">
+                    <div class="animate__animated animate__pulse detalle-tipologia">
 
                       <mat-form-field class="control">
                         <mat-label>{{item.name}}</mat-label>
-                        <input type="number" matInput name="sup" [(ngModel)]="item.supCubierta" required>
+                        <input type="number" matInput [name]="'sup' + i" [(ngModel)]="item.supCubierta" required>
                         <span matSuffix>m²</span>
                       </mat-form-field>
+
+                      <div class="d-flex">
+                        <label class="me-2">Costo</label>
+                        <p>$ </p>
+                      </div>
 
                     </div>
                   </ng-template>
                 </div>
 
                 <app-empty-state *ngIf="tipologia.detalle.length == 0" [title]="'Cantidad de habitaciones'"
-                  [description]="'Por favor, seleccione cantidad máxima de habitaciones'"></app-empty-state>
+                                  [description]="'Por favor, seleccione cantidad máxima de habitaciones'">
+                </app-empty-state>
               </div>
 
             </div>
